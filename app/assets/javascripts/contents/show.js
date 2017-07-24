@@ -7,4 +7,12 @@ $(document).on('turbolinks:load', function() {
       $(this).next().css("display","block")
     })
   }
+
+  $('#signupBtn').click(function() {
+    $('.close').trigger("click")
+  })
+
+  $('#loginBtn').click(function() {
+    $('.close').trigger("click")
+  })
 })

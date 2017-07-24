@@ -10,6 +10,7 @@ class ContentsController < ApplicationController
   end
 
   def show
+    @user = User.new
     @content = Content.new
     @comment = Comment.new
     @mood = Mood.find(params[:id])
