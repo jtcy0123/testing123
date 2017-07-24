@@ -7,7 +7,11 @@
 <div class="container-fluid">
   <h1><%= @mood.emotion.upcase %></h1>
   <hr>
+<!-- 
   <%= link_to 'Video' %>&emsp;<%= link_to 'Movie' %>&emsp;<%= link_to 'Podcast' %>&emsp;<%= link_to 'Article' %>&emsp;<%= link_to 'Blog' %>
+   -->
+
+   <%= render partial: "content_type" %>
   <hr>
   <div class="col-md-3">
     <p></p>

@@ -12,7 +12,12 @@ class ContentsController < ApplicationController
   def show
     @content = Content.new
     @mood = Mood.find(params[:id])
-    @contents = Content.where(mood_id: @mood.id)
-    render template: "contents/show"
+    byebug
+      if params[:categoryx]==nil
+        @contents = Content.where(mood_id: @mood.id)
+      else
+        @contents = Content.where(mood_id: @mood.id, category: params[:categoryx])
+      end
+    # render template: "contents/show"
   end
 end
