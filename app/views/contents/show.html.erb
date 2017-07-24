@@ -15,7 +15,12 @@
   <div class="col-md-6 well" id="contentsDiv">
     <% @contents.each do |c| %>
       <div class="well">
-        <b><%= link_to c.subject, c.link, target: :_blank %></b>
+        <b><%= link_to c.subject, c.link, target: :_blank %></b><br>
+        <button id="commentBtn">Comments</button>
+        <div id="showComment"><% Comment.where(content_id: c.id).each do |comment| %>
+            <p><%= comment.text %></p>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>
