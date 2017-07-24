@@ -7,6 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Dosis:600" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= yield :head %>
@@ -16,7 +17,7 @@
       Signed in as: <%= current_user.email %>
       <%= button_to 'Sign out', sign_out_path, method: :delete, style: "float: right" %>
     <% else %>
-      <%= link_to 'Sign in', sign_in_path, style: "float: right"  %>
+      <a data-toggle="modal" data-target="#loginModal">Sign in</a>
     <% end %>
     <div id="flash">
       <% flash.each do |key, value| %>
@@ -26,3 +27,5 @@
     <%= yield %>
   </body>
 </html>
+<!-- Modal -->
+<%= render partial: '/welcome/modal' %>
