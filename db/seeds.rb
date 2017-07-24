@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+#
+# Seed Mood
+ActiveRecord::Base.transaction do
+  Mood.create(emotion: "happy")
+  Mood.create(emotion: "sad")
+  Mood.create(emotion: "fear")
+  Mood.create(emotion: "anger")
+end

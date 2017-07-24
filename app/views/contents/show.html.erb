@@ -1,0 +1,48 @@
+<style type="text/css">
+  #contentsDiv {
+    background-color: white;
+  }
+</style>
+<!--  -->
+<div class="container-fluid">
+  <h1><%= @mood.emotion.upcase %></h1>
+  <hr>
+  <%= link_to 'Video' %>&emsp;<%= link_to 'Movie' %>&emsp;<%= link_to 'Podcast' %>&emsp;<%= link_to 'Article' %>&emsp;<%= link_to 'Blog' %>
+  <hr>
+  <div class="col-md-3">
+    <p></p>
+  </div>
+  <div class="col-md-6 well" id="contentsDiv">
+    <% @contents.each do |c| %>
+      <div class="well">
+        <b><%= link_to c.subject, c.link, target: :_blank %></b>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-3">
+    <p>FORUM</p>
+  </div>
+  <hr style="clear: both;">
+  <button data-toggle="modal" data-target="#addModal">ADD</button>
+</div>
+<div class="modal fade" id="addModal" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">CREATE</h4>
+      </div>
+      <div class="modal-body" style="text-align: center;">
+        <%= form_for @content do |form| %>
+          <%= form.text_field :link, type: 'link', placeholder: 'paste url here', required: true %>
+          <%= form.hidden_field :mood_id, value: @mood.id %>
+          <%= form.submit "ADD", class: 'btn' %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
