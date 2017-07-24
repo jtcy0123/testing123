@@ -2,6 +2,19 @@
   #contentsDiv {
     background-color: white;
   }
+  
+  .commentBtn {
+    color: #555;
+  }
+  
+  #logoutComment {
+    height: 22px;
+    width: 170px;
+    border: solid #999;
+    border-width: thin;
+    background-color: white;
+    color: #777;
+  }
 </style>
 <!--  -->
 <div class="container-fluid">
@@ -13,12 +26,24 @@
     <p></p>
   </div>
   <div class="col-md-6 well" id="contentsDiv">
+    <p id="contentLength" style="display: none"><%= @contents.length %></p>
     <% @contents.each do |c| %>
       <div class="well">
         <b><%= link_to c.subject, c.link, target: :_blank %></b><br>
-        <button id="commentBtn">Comments</button>
-        <div id="showComment"><% Comment.where(content_id: c.id).each do |comment| %>
-            <p><%= comment.text %></p>
+        <a class="commentBtn" id="commentBtn<%= c.id %>"><i class="fa fa-comment" aria-hidden="true">&nbsp;<b>Comments</b></i></a>
+        <div id="showComment<%= c.id %>" >
+          <% Comment.where(content_id: c.id).each do |comment| %>
+            <p><b><%= User.find(comment.user_id).username %></b>&ensp;<%= comment.text %></p>
+          <% end %>
+          <% if signed_in? %>
+            <%= form_for @comment do |form| %>
+              <%= form.text_field :text, type: 'text', placeholder: 'comment here', required: true %>
+              <%= form.hidden_field :user_id, value: current_user.id %>
+              <%= form.hidden_field :content_id, value: c.id %>
+              <%= form.hidden_field :mood, value: @mood.id %>
+            <% end %>
+          <% else %>
+            <div id="logoutComment" data-toggle="modal" data-target="#loginModal">comment here</div>
           <% end %>
         </div>
       </div>
@@ -30,6 +55,7 @@
   <hr style="clear: both;">
   <button data-toggle="modal" data-target="#addModal">ADD</button>
 </div>
+<!-- Modal for adding links -->
 <div class="modal fade" id="addModal" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
@@ -43,6 +69,43 @@
           <%= form.text_field :link, type: 'link', placeholder: 'paste url here', required: true %>
           <%= form.hidden_field :mood_id, value: @mood.id %>
           <%= form.submit "ADD", class: 'btn' %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal for logging in -->
+<div class="modal fade" id="loginModal" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">CREATE</h4>
+      </div>
+      <div class="modal-body" style="text-align: center;">
+        <%= form_for :session, url: session_path, remote: true do |form| %>
+          <div class="text-field">
+            <%= form.text_field :email, type: 'email', placeholder: "email"  %>
+          </div>
+          <div class="password-field">
+            <%= form.password_field :password , placeholder: "password" %>
+          </div>
+          <div class="submit-field">
+            <%= form.submit class: 'btn' %>
+          </div>
+          <br>
+          <div class="other-links">
+            <% if Clearance.configuration.allow_sign_up? %>
+              new user?
+              <%= link_to "create new account", sign_up_path %><br>
+            <% end %>
+            forgot your password?
+            <%= link_to "click here", new_password_path %>
+          </div>
         <% end %>
       </div>
       <div class="modal-footer">
