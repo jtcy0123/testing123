@@ -1,0 +1,51 @@
+#happy {
+  background-color: #FAFF9C; 
+}
+
+#happy h1 {
+  font-family: 'Dosis', sans-serif;
+  font-size: 50px;
+  text-align: center;
+
+}
+
+#sad {
+  background-color: #F2FFFF;
+}
+
+#sad h1 {
+font-family: 'Dosis', sans-serif;
+  font-size: 50px;
+  text-align: left;
+
+}
+
+#anger {
+  background-color: #FFB19C;
+}
+
+#anger h1 {
+font-family: 'Dosis', sans-serif;
+  font-size: 50px;
+  text-align: center;
+
+
+}
+
+#fear {
+  background-color: #F3F3F3;
+}
+
+
+
+#fear h1{
+
+  font-family: 'Dosis', sans-serif;
+  font-size: 50px;
+  text-align: center;
+
+}
+{
+font-family: 'Dosis', sans-serif;
+  font-size: 18px;
+}
