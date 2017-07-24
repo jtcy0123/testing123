@@ -12,6 +12,7 @@ class ContentsController < ApplicationController
   def show
     @content = Content.new
     @mood = Mood.find(params[:id])
+    @moods = Mood.all
     @contents = Content.where(mood_id: @mood.id)
     render template: "contents/show"
   end
