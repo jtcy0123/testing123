@@ -16,7 +16,7 @@
   </head>
   <body>
     <% if signed_in? %>
-      Signed in as: <%= current_user.email %>
+      <!-- Signed in as: <%= current_user.email %> -->
       <%= button_to 'Sign out', sign_out_path, method: :delete, style: "float: right" %>
     <% else %>
       <a data-toggle="modal" data-target="#loginModal">Sign in</a>

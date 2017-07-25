@@ -73,10 +73,10 @@ font-family: 'Dosis', sans-serif;
 }
 
 /*designing the scroll bar*/
-.chatlogs::-webkit-scrollbar {
+.chatlogs::-webkit-scrollbar, #leftDiv::-webkit-scrollbar {
   width: 10px;
 }
-.chatlogs::-webkit-scrollbar-thumb {
+.chatlogs::-webkit-scrollbar-thumb, #leftDiv::-webkit-scrollbar-thumb {
   border-radius: 5px;
   background: rgba(0,0,0,.1);
 }
