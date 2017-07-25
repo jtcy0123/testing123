@@ -28,12 +28,17 @@ class ContentsController < ApplicationController
   end
 
   def show
+    @user = User.new
     @content = Content.new
+    @comment = Comment.new
+    @messages = Message.all
     @mood = Mood.find(params[:id])
+    @moods = Mood.all
+
       if params[:categoryx]==nil
-        @contents = Content.where(mood_id: @mood.id)
+        @contents = Content.where(mood_id: @mood.id).order("clicks DESC")
       else
-        @contents = Content.where(mood_id: @mood.id, category: params[:categoryx])
+        @contents = Content.where(mood_id: @mood.id, category: params[:categoryx]).order("clicks DESC")
       end
 
     render template: "contents/show"
@@ -46,4 +51,19 @@ class ContentsController < ApplicationController
     c.update(count:d)
     redirect_to c.link
   end
+ 
+  def new
+  end
+
+  def click
+    content = Content.find(params["id"].to_i)
+    old_click_count = content.clicks
+    new_click_count = old_click_count + 1
+    if content.update(clicks: new_click_count)
+      render json: {click_count: content.clicks}
+    else
+      render json: {message: "error"}
+    end
+  end
+
 end

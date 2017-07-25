@@ -1,0 +1,14 @@
+<p id="errors"></p>
+<div id="clearance" class="sign-up" style="text-align: center;">
+  <h2><%= t(".title") %></h2>
+  <%= form_for(@user, remote: true) do |form| %>
+    <%= render partial: '/users/form', object: form %>
+    <div class="submit-field">
+      <%= form.submit class: 'btn' %>
+    </div>
+    <div class="other-links">
+      already have an account?
+      <%= link_to "login here", sign_in_path %>
+    </div>
+  <% end %>
+</div>

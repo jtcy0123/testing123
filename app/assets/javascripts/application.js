@@ -13,3 +13,11 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function() {
+  var faye = new Faye.Client('http://localhost:9292/faye');
+  // channel
+  faye.subscribe("/messages/new", function(data) {
+    eval(data);
+  })
+})

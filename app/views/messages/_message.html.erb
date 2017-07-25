@@ -1,0 +1,5 @@
+<div style="padding-bottom: 10px" >
+  <span class="w3-badge"><%= User.find(message.user_id).username[0].upcase %></span>
+  <%= message.content %>
+  <span style="float: right; font-size: 10px; color: grey;"><%= message.created_at.strftime("%I:%M%p") %></span><br>
+</div>

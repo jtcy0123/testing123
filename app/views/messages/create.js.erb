@@ -1,0 +1,5 @@
+<% broadcast "/messages/new" do %>
+  var moodID = <%= params["message"]["mood_id"] %>
+  $('#chat_'+ moodID).append("<%= escape_javascript render(@message) %>");
+<% end %>
+$('#new_message')[0].reset();

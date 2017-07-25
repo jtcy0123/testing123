@@ -6,15 +6,20 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Dosis:600" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script type="text/javascript" src="http://localhost:9292/faye.js"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield :head %>
   </head>
   <body>
     <% if signed_in? %>
-      Signed in as: <%= current_user.email %>
-      <%= button_to 'Sign out', sign_out_path, method: :delete %>
+      <!-- Signed in as: <%= current_user.email %> -->
+      <%= button_to 'Sign out', sign_out_path, method: :delete, style: "float: right" %>
     <% else %>
-      <%= link_to 'Sign in', sign_in_path %>
+      <a data-toggle="modal" data-target="#loginModal">Sign in</a>
     <% end %>
     <div id="flash">
       <% flash.each do |key, value| %>
@@ -24,3 +29,5 @@
     <%= yield %>
   </body>
 </html>
+<!-- Modal -->
+<%= render partial: '/welcome/modal' %>
