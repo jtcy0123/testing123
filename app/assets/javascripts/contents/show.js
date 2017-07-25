@@ -1,11 +1,14 @@
 $(document).on('turbolinks:load', function() {
-  var totalContents = JSON.parse($('#contentLength').text())
-  for (i = 0; i < totalContents.length; i++) {
-    $('#showComment'+ totalContents[i]).css("display", "none")
-    $('#commentBtn'+ totalContents[i]).on('click', function() {
-      event.preventDefault()
-      $(this).next().css("display","block")
-    })
+  var array = $('#contentLength').text()
+  if(array != "") {
+    var totalContents = JSON.parse();
+    for (i = 0; i < totalContents.length; i++) {
+      $('#showComment'+ totalContents[i]).css("display", "none")
+      $('#commentBtn'+ totalContents[i]).on('click', function() {
+        event.preventDefault()
+        $(this).next().css("display","block")
+      })
+    }
   }
 
   $('#signupBtn').click(function() {
