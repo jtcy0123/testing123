@@ -16,10 +16,21 @@ class ContentsController < ApplicationController
     @messages = Message.all
     @mood = Mood.find(params[:id])
     @moods = Mood.all
-    @contents = Content.where(mood_id: @mood.id)
+    @contents = Content.where(mood_id: @mood.id).order("clicks DESC")
     render template: "contents/show"
   end
-
+  
   def new
   end
+  
+  def click
+    content = Content.find(params["id"].to_i)
+    old_click_count = content.clicks
+    new_click_count = old_click_count + 1
+    if content.update(clicks: new_click_count)
+      render json: {click_count: content.clicks}
+    else
+      render json: {message: "error"}
+    end
+    
 end

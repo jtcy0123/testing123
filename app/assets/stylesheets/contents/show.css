@@ -5,7 +5,7 @@
 #happy h1 {
   font-family: 'Dosis', sans-serif;
   font-size: 50px;
-  text-align: center;
+  float: left;
 
 }
 
@@ -16,9 +16,7 @@
 #sad h1 {
 font-family: 'Dosis', sans-serif;
   font-size: 50px;
-  text-align: center;
-
-}
+  }
 
 #anger {
   background-color: #FFB19C;
@@ -27,9 +25,6 @@ font-family: 'Dosis', sans-serif;
 #anger h1 {
 font-family: 'Dosis', sans-serif;
   font-size: 50px;
-  text-align: center;
-
-
 }
 
 #fear {
@@ -41,10 +36,7 @@ font-family: 'Dosis', sans-serif;
 
   font-family: 'Dosis', sans-serif;
   font-size: 50px;
-  text-align: center;
-
-}
-
+  }
 
 #contentsDiv, .abc {
     background-color: white;

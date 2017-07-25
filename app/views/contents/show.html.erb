@@ -36,22 +36,27 @@
                 <p id="contentLength" style="display: none"><%= @contents.pluck(:id) %></p>
                 <% @contents.each do |c| %>
                   <div class="well">
-                    <b><%= link_to c.subject, c.link, target: :_blank %></b><br>
-                    <a class="commentBtn" id="commentBtn<%= c.id %>"><i class="fa fa-comment" aria-hidden="true">&nbsp;<b>Comments</b></i></a>
-                    <div id="showComment<%= c.id %>" >
-                      <% Comment.where(content_id: c.id).each do |comment| %>
-                        <p><b><%= User.find(comment.user_id).username %></b>&ensp;<%= comment.text %></p>
-                      <% end %>
-                      <% if signed_in? %>
-                        <%= form_for @comment do |form| %>
-                          <%= form.text_field :text, type: 'text', placeholder: 'comment here', required: true %>
-                          <%= form.hidden_field :user_id, value: current_user.id %>
-                          <%= form.hidden_field :content_id, value: c.id %>
-                          <%= form.hidden_field :mood, value: @mood.id %>
+                    <div class='col-md-2'>
+                      <%= image_tag 'http://via.placeholder.com/50x50' %>
+                    </div>
+                    <div class='col-md-10'>
+                      <b><%= link_to c.subject, c.link, target: :_blank, class: "clickcount", data: {"cId" => c.id} %></b><br>
+                      <a class="commentBtn" id="commentBtn<%= c.id %>"><i class="fa fa-comment" aria-hidden="true">&nbsp;<b>Comments</b></i></a>
+                      <div id="showComment<%= c.id %>" >
+                        <% Comment.where(content_id: c.id).each do |comment| %>
+                          <p><b><%= User.find(comment.user_id).username %></b>&ensp;<%= comment.text %></p>
                         <% end %>
-                      <% else %>
-                        <div id="logoutComment" data-toggle="modal" data-target="#loginModal">comment here</div>
-                      <% end %>
+                        <% if signed_in? %>
+                          <%= form_for @comment do |form| %>
+                            <%= form.text_field :text, type: 'text', placeholder: 'comment here', required: true %>
+                            <%= form.hidden_field :user_id, value: current_user.id %>
+                            <%= form.hidden_field :content_id, value: c.id %>
+                            <%= form.hidden_field :mood, value: @mood.id %>
+                          <% end %>
+                        <% else %>
+                          <div id="logoutComment" data-toggle="modal" data-target="#loginModal">comment here</div>
+                        <% end %>
+                      </div>
                     </div>
                   </div>
                 <% end %>
