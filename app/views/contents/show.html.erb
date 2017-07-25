@@ -7,22 +7,20 @@
 <div class="container-fluid">
   <h1><%= @mood.emotion.upcase %></h1>
   <hr>
-<!-- 
-  <%= link_to 'Video' %>&emsp;<%= link_to 'Movie' %>&emsp;<%= link_to 'Podcast' %>&emsp;<%= link_to 'Article' %>&emsp;<%= link_to 'Blog' %>
-   -->
-
-   <%= render partial: "content_type" %>
+  <%= render partial: "content_type" %>
   <hr>
   <div class="col-md-3">
     <p></p>
   </div>
-  <div class="col-md-6 well" id="contentsDiv">
+
+  <div class="col-md-6 well" id="contentsDiv"><!-- where the listing begin -->
     <% @contents.each do |c| %>
       <div class="well">
-        <b><%= link_to c.subject, c.link, target: :_blank %></b>
+        <b><%= link_to c.subject, redirect_path(c.id), target: :_blank %></b>        
       </div>
     <% end %>
-  </div>
+  </div><!-- the listing end -->
+
   <div class="col-md-3">
     <p>FORUM</p>
   </div>
@@ -41,6 +39,13 @@
         <%= form_for @content do |form| %>
           <%= form.text_field :link, type: 'link', placeholder: 'paste url here', required: true %>
           <%= form.hidden_field :mood_id, value: @mood.id %>
+
+          <%= radio_button_tag(:categoryx, "news") %>
+          <%= label_tag(:categoryy, "News") %>
+
+          <%= radio_button_tag(:categoryx, "movie") %>
+          <%= label_tag(:categoryy, "Movies") %>
+
           <%= form.submit "ADD", class: 'btn' %>
         <% end %>
       </div>
