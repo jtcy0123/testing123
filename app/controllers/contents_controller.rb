@@ -19,4 +19,7 @@ class ContentsController < ApplicationController
     @contents = Content.where(mood_id: @mood.id)
     render template: "contents/show"
   end
+
+  def new
+  end
 end

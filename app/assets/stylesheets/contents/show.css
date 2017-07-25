@@ -37,7 +37,6 @@ font-family: 'Dosis', sans-serif;
 }
 
 
-
 #fear h1{
 
   font-family: 'Dosis', sans-serif;
@@ -45,7 +44,54 @@ font-family: 'Dosis', sans-serif;
   text-align: center;
 
 }
-{
-font-family: 'Dosis', sans-serif;
-  font-size: 18px;
+
+
+#contentsDiv, .abc {
+    background-color: white;
+}
+
+.commentBtn {
+  color: #555;
+}
+
+#logoutComment {
+  height: 22px;
+  width: 170px;
+  border: solid #999;
+  border-width: thin;
+  background-color: white;
+  color: #777;
+}
+
+.chatbox {
+  height: 450px;
+  background: #ddd;
+  padding: 10px 25px;
+}
+
+.chatlogs {
+  padding: 10px;
+  width: 100%;
+  height: 300px;
+  border-style: inset;
+  background: #eee;
+  /*to manage overflow messages scrollable*/
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+/*designing the scroll bar*/
+.chatlogs::-webkit-scrollbar {
+  width: 10px;
+}
+.chatlogs::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: rgba(0,0,0,.1);
+}
+
+/**/
+#leftDiv {
+  height: 450px;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
