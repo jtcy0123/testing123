@@ -45,7 +45,7 @@
         <h4 class="modal-title">CREATE</h4>
       </div>
       <div class="modal-body" style="text-align: center;">
-        <%= form_for(@user, remote: true) do |form| %>
+        <%= form_for User.new do |form| %>
           <%= render partial: '/users/form', object: form %>
           <div class="submit-field">
             <%= form.submit class: 'btn' %>

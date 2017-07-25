@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :contents, only: [:create, :show]
   resources :comments, only: [:create]
+  resources :messages, only: [:index, :new, :create]
 
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, only: [:create]
