@@ -10,7 +10,8 @@ class UsersController < Clearance::UsersController
       sign_in @user
       redirect_to "/"
     else
-      redirect_to :back
+      redirect_back fallback_location: root_path
+
     end
   end
 
