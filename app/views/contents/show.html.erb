@@ -15,6 +15,7 @@
           <%= link_to 'FEAR', content_path(@moods.find(3)) %>
           <%= link_to 'ANGER', content_path(@moods.find(4)) %>
           <hr>
+          <%= render partial: "content_type" %>
           <%= link_to 'Video' %>&emsp;<%= link_to 'Movie' %>&emsp;<%= link_to 'Podcast' %>&emsp;<%= link_to 'Article' %>&emsp;<%= link_to 'Blog' %>
           <hr>
           <!--  -->
@@ -118,6 +119,11 @@
                   <%= form_for @content do |form| %>
                     <%= form.text_field :link, type: 'link', placeholder: 'paste url here', required: true %>
                     <%= form.hidden_field :mood_id, value: @mood.id %>
+                  <%= radio_button_tag(:categoryx, "news") %>
+                  <%= label_tag(:categoryy, "News") %>
+
+                  <%= radio_button_tag(:categoryx, "movie") %>
+                  <%= label_tag(:categoryy, "Movies") %>
                     <%= form.submit "ADD", class: 'btn' %>
                   <% end %>
                 </div>
