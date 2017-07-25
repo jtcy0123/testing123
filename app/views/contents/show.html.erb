@@ -26,69 +26,69 @@
       <% elsif @mood.emotion == "fear" %>
         <div id="fear" class="background">
         <% end %>
-<div class="container-fluid">
-  <h1><%= @mood.emotion.upcase %></h1>
-  <%= link_to 'HOME', root_path %>
+        <div class="container-fluid">
+          <h1><%= @mood.emotion.upcase %></h1>
+          <%= link_to 'HOME', root_path %>
           <%= link_to 'HAPPY', content_path(@moods.find(1)) %>
           <%= link_to 'SAD', content_path(@moods.find(2)) %>
           <%= link_to 'FEAR', content_path(@moods.find(3)) %>
           <%= link_to 'ANGER', content_path(@moods.find(4)) %>
-  <hr>
-  <%= link_to 'Video' %>&emsp;<%= link_to 'Movie' %>&emsp;<%= link_to 'Podcast' %>&emsp;<%= link_to 'Article' %>&emsp;<%= link_to 'Blog' %>
-  <hr>
-  <div class="col-md-3">
-    <p></p>
-  </div>
-  <div class="col-md-6 well" id="contentsDiv">
-    <p id="contentLength" style="display: none"><%= @contents.length %></p>
-    <% @contents.each do |c| %>
-      <div class="well">
-        <b><%= link_to c.subject, c.link, target: :_blank %></b><br>
-        <a class="commentBtn" id="commentBtn<%= c.id %>"><i class="fa fa-comment" aria-hidden="true">&nbsp;<b>Comments</b></i></a>
-        <div id="showComment<%= c.id %>" >
-          <% Comment.where(content_id: c.id).each do |comment| %>
-            <p><b><%= User.find(comment.user_id).username %></b>&ensp;<%= comment.text %></p>
-          <% end %>
-          <% if signed_in? %>
-            <%= form_for @comment do |form| %>
-              <%= form.text_field :text, type: 'text', placeholder: 'comment here', required: true %>
-              <%= form.hidden_field :user_id, value: current_user.id %>
-              <%= form.hidden_field :content_id, value: c.id %>
-              <%= form.hidden_field :mood, value: @mood.id %>
+          <hr>
+          <%= link_to 'Video' %>&emsp;<%= link_to 'Movie' %>&emsp;<%= link_to 'Podcast' %>&emsp;<%= link_to 'Article' %>&emsp;<%= link_to 'Blog' %>
+          <hr>
+          <div class="col-md-3">
+            <p></p>
+          </div>
+          <div class="col-md-6 well" id="contentsDiv">
+            <p id="contentLength" style="display: none"><%= @contents.pluck(:id) %></p>
+            <% @contents.each do |c| %>
+              <div class="well">
+                <b><%= link_to c.subject, c.link, target: :_blank %></b><br>
+                <a class="commentBtn" id="commentBtn<%= c.id %>"><i class="fa fa-comment" aria-hidden="true">&nbsp;<b>Comments</b></i></a>
+                <div id="showComment<%= c.id %>" >
+                  <% Comment.where(content_id: c.id).each do |comment| %>
+                    <p><b><%= User.find(comment.user_id).username %></b>&ensp;<%= comment.text %></p>
+                  <% end %>
+                  <% if signed_in? %>
+                    <%= form_for @comment do |form| %>
+                      <%= form.text_field :text, type: 'text', placeholder: 'comment here', required: true %>
+                      <%= form.hidden_field :user_id, value: current_user.id %>
+                      <%= form.hidden_field :content_id, value: c.id %>
+                      <%= form.hidden_field :mood, value: @mood.id %>
+                    <% end %>
+                  <% else %>
+                    <div id="logoutComment" data-toggle="modal" data-target="#loginModal">comment here</div>
+                  <% end %>
+                </div>
+              </div>
             <% end %>
-          <% else %>
-            <div id="logoutComment" data-toggle="modal" data-target="#loginModal">comment here</div>
-          <% end %>
+          </div>
+          <div class="col-md-3">
+            <p>FORUM</p>
+          </div>
+          <hr style="clear: both;">
+          <button data-toggle="modal" data-target="#addModal">ADD</button>
         </div>
-      </div>
-    <% end %>
-  </div>
-  <div class="col-md-3">
-    <p>FORUM</p>
-  </div>
-  <hr style="clear: both;">
-  <button data-toggle="modal" data-target="#addModal">ADD</button>
-</div>
-<!-- Modal for adding links -->
-<div class="modal fade" id="addModal" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">CREATE</h4>
-      </div>
-      <div class="modal-body" style="text-align: center;">
-        <%= form_for @content do |form| %>
-          <%= form.text_field :link, type: 'link', placeholder: 'paste url here', required: true %>
-          <%= form.hidden_field :mood_id, value: @mood.id %>
-          <%= form.submit "ADD", class: 'btn' %>
-        <% end %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-<%= render partial: '/welcome/modal' %>
+        <!-- Modal for adding links -->
+        <div class="modal fade" id="addModal" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">CREATE</h4>
+              </div>
+              <div class="modal-body" style="text-align: center;">
+                <%= form_for @content do |form| %>
+                  <%= form.text_field :link, type: 'link', placeholder: 'paste url here', required: true %>
+                  <%= form.hidden_field :mood_id, value: @mood.id %>
+                  <%= form.submit "ADD", class: 'btn' %>
+                <% end %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%= render partial: '/welcome/modal' %>
