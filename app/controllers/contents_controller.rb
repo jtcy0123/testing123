@@ -13,6 +13,7 @@ class ContentsController < ApplicationController
     @user = User.new
     @content = Content.new
     @comment = Comment.new
+    @messages = Message.all
     @mood = Mood.find(params[:id])
     @moods = Mood.all
     @contents = Content.where(mood_id: @mood.id)

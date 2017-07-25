@@ -64,7 +64,18 @@
             <% end %>
           </div>
           <div class="col-md-3">
-            <p>FORUM</p>
+            <h1>Chat</h1>
+            <ul id="chat">
+              <%= render @messages.where(mood_id: @mood.id) %>
+            </ul>
+            <% if signed_in? %>
+              <%= form_for Message.new, :remote => true do |f| %>
+                <%= f.text_field :content %>
+                <%= f.hidden_field :user_id, value: current_user.id %>
+                <%= f.hidden_field :mood_id, value: @mood.id %>
+                <%= f.submit "Send" %>
+              <% end %>
+            <% end %>
           </div>
           <hr style="clear: both;">
           <button data-toggle="modal" data-target="#addModal">ADD</button>

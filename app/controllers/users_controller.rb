@@ -8,15 +8,16 @@ class UsersController < Clearance::UsersController
     @user = User.new(user_params)
     if @user.save
       sign_in @user
-      redirect_to "/"
+      redirect_back fallback_location: root_path
     else
-      redirect_to :back
+      flash[:error] = @user.errors.full_messages
+      redirect_back fallback_location: root_path
     end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :photo)
+    params.require(:user).permit(:username, :email, :password, :photo)
   end
 end
