@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function() {
   var array = $('#contentLength').text()
-  if(array != "") {
+  if(array !== "") {
     var totalContents = JSON.parse(array);
     for (i = 0; i < totalContents.length; i++) {
       $('#showComment'+ totalContents[i]).css("display", "none")
