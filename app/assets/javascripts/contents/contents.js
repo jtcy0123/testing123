@@ -8,7 +8,7 @@ $(document).on("turbolinks:load", function(){
       url: "/contents/" + contentId + "/click",
       type: "post",
       success: function(data){
-        debugger
+        
       }
     })
   })

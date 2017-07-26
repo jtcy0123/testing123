@@ -36,9 +36,9 @@ class ContentsController < ApplicationController
     @moods = Mood
 
     if params[:categoryx]==nil
-      @contents = Content.where(mood_id: @mood.id).order("clicks DESC")
+      @contents = Content.where(mood_id: @mood.id).order("count DESC")
     else
-      @contents = Content.where(mood_id: @mood.id, category: params[:categoryx]).order("clicks DESC")
+      @contents = Content.where(mood_id: @mood.id, category: params[:categoryx]).order("count DESC")
     end
 
     render template: "contents/show"
