@@ -32,24 +32,14 @@
   <link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href=“https://fonts.googleapis.com/css?family=Raleway” rel=“stylesheet”>
-
+  <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
   </head>
   
     
 
   <body class="cbp-spmenu-push">
-  <% if signed_in? %>
-      <!-- Signed in as: <%= current_user.email %> -->
-      <%= button_to 'Sign out', sign_out_path, method: :delete, style: "float: right" %>
-    <% else %>
-      <a data-toggle="modal" data-target="#loginModal">Sign in</a>
-    <% end %>
-    <div id="flash">
-      <% flash.each do |key, value| %>
-        <div class="flash <%= key %>"><%= value %></div>
-      <% end %>
-    </div>
-    <% %w(happy sad anger fear).each do |emotion| %>
+ 
+    <% %w(happy sad anger fear random).each do |emotion| %>
       <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-<%= emotion %>">
         <div class="menu-header">
           <div align="center">  
@@ -61,22 +51,51 @@
         </div>
       </nav>
     <% end %>    
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-     <div class="navbar-header">
+  
+   
+<div class="navbar-header">
       <a class="navbar-brand" href="#">Felen</a>
     </div>
-      <div align="center">
-        <!-- Class "cbp-spmenu-open" gets applied to menu -->
+    <div id="nav">
+      <ul>
+        <li class="nav_button">
            <button class="cbp-spmenu-button" data-target="cbp-spmenu-happy">Happy</button>
-           <button  class="cbp-spmenu-button" data-target="cbp-spmenu-sad">Sad</button>
-           <button class="cbp-spmenu-button" data-target="cbp-spmenu-anger">Anger</button>
-           <button class="cbp-spmenu-button" data-target="cbp-spmenu-fear">Fear</button>
-      </div>
-    
+        </li>
+       <li class="nav_button">
+        <button  class="cbp-spmenu-button" data-target="cbp-spmenu-sad">Sad</button>
+        </li>
+        <li class="nav_button">
+        <button class="cbp-spmenu-button" data-target="cbp-spmenu-anger">Anger</button>
+        </li>
+        <li class="nav_button">
+         <button class="cbp-spmenu-button" data-target="cbp-spmenu-fear">Fear</button>
+         </li>
+          <li class="nav_button">
+         <button class="cbp-spmenu-button" data-target="cbp-spmenu-fear">Random</button>
+         </li>
+         </ul>
+         <div class="pull-right">
+         <ul class="right-wrapper">
+     <% if signed_in? %>
+      <!-- Signed in as: <%= current_user.email %> -->
+      <%= button_to 'Sign out', sign_out_path, method: :delete%>
+    <% else %>
+
+    <li> <a data-toggle="modal" data-target="#loginModal"><i class="fa fa-user-circle-o" style="font-size:24px"></i></a> </li>
+   <li> <i class="fa fa-search" style="font-size:24px"></i></li>
+    <% end %>
+    <div id="flash">
+      <% flash.each do |key, value| %>
+        <div class="flash <%= key %>"><%= value %></div>
+      <% end %>
+      
+ </div>  
+    </div>
+ </div>
+      
+      
      
-    
-     </div>
+  
 </nav>  <!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
     <script src="js/classie.js"></script>
     <script>
