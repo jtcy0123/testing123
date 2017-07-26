@@ -4,4 +4,5 @@ class WelcomeController < ApplicationController
     @moods = Mood.all
     @contents = Content.all.order("count DESC")
   end
+
 end
