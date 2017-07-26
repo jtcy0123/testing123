@@ -50,7 +50,9 @@
         </nav>
       <% end %>
       <div class="navbar-header">
-        <a class="navbar-brand" href="/">Felen</a>
+        <a class="navbar-brand" href="/">
+          <div id="logo">Felen</div>
+        </a>
       </div>
       <div id="nav">
         <ul>
@@ -73,19 +75,22 @@
         <!-- <div class="pull-right"> -->
         <ul class="right-wrapper">
           <% if signed_in? %>
-            <!-- Signed in as: <%= current_user.email %> -->
-            <%= button_to 'Sign out', sign_out_path, method: :delete%>
+            <li><%= current_user.username %> <span class="badge"><%= current_user.point %></span></li>
           <% else %>
-            <div id="flash">
-              <% flash.each do |key, value| %>
-                <div class="flash <%= key %>"><%= value %></div>
-              <% end %>
-            <% end %>
-            <li class="social-media"> <a data-toggle="modal" data-target="#loginModal"><i class="fa fa-user-circle-o" style="font-size:24px"></i></a> </li>
-            <li class="social-media"> <i class="fa fa-search" style="font-size:24px"></i></li>
-            <li class="social-media"> <i class="fa fa-youtube" style="font-size:24px"></i></li>
-            <li class="social-media"> <i class="fa fa-twitter" style="font-size:24px"></i></li>
-            <li class="social-media"> <i class="fa fa-facebook" style="font-size:24px"></i></li>
+            <li class="social-media"> <a data-toggle="modal" data-target="#loginModal"><i class="fa fa-user-circle-o" style="font-size:24px"></i></a></li>
+          <% end%>
+          <li class="social-media"> <i class="fa fa-search" style="font-size:24px"></i></li>
+          <li class="social-media"> <i class="fa fa-youtube" style="font-size:24px"></i></li>
+          <li class="social-media"> <i class="fa fa-twitter" style="font-size:24px"></i></li>
+          <li class="social-media"> <i class="fa fa-facebook" style="font-size:24px"></i></li>
+          <li><% if signed_in? %>
+              <%= button_to 'Sign out', sign_out_path, method: :delete, class: "btn" %>
+            <% else %>
+              <div id="flash">
+                <% flash.each do |key, value| %>
+                  <div class="flash <%= key %>"><%= value %></div>
+                <% end %>
+              <% end %></li>
           </ul>
           <!-- </div>   -->
         </div>

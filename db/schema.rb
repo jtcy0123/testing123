@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170726040714) do
+ActiveRecord::Schema.define(version: 20170726092402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(version: 20170726040714) do
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "count"
     t.integer "clicks", default: 0
+    t.integer "count"
     t.index ["mood_id"], name: "index_contents_on_mood_id"
   end
 
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20170726040714) do
     t.string "encrypted_password", limit: 128, null: false
     t.string "confirmation_token", limit: 128
     t.string "remember_token", limit: 128, null: false
+    t.integer "point"
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
