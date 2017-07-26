@@ -14,3 +14,256 @@
  *= require_self
  */
 
+@import "*";
+
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+@font-face {
+  font-family: 'fontawesome';
+  src:url('../fonts/fontawesome.eot');
+  src:url('../fonts/fontawesome.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/fontawesome.svg#fontawesome') format('svg'),
+    url('../fonts/fontawesome.woff') format('woff'),
+    url('../fonts/fontawesome.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body, html { font-size: 100%;   padding: 0; margin: 0;}
+
+/* Reset */
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+
+
+a {
+  color: #f0f0f0;
+  text-decoration: none;
+ 
+
+
+}
+
+
+.main {
+  width: 90%;
+  max-width: 69em;
+  margin: 0 auto;
+  padding: 0 1.875em 3.125em 1.875em;
+}
+
+
+
+.container > header nav a:after {
+  content: attr(data-info);
+  color: #47a3da;
+  position: absolute;
+  width: 600%;
+  top: 120%;
+  text-align: right;
+  right: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.container > header nav a:hover:after {
+  opacity: 1;
+}
+
+.container > header nav a:hover {
+  background: #47a3da;
+}
+
+.main > section {
+  max-width: 260px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.main > section h2 {
+  font-weight: 300;
+  color: #ccc;
+}
+
+
+.icon-drop:before, 
+.icon-arrow-left:before {
+  font-family: 'fontawesome';
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 2;
+  text-align: center;
+  color: #47a3da;
+  -webkit-font-smoothing: antialiased;
+  text-indent: 8000px;
+  padding-left: 8px;
+}
+
+.container > header nav a:hover:before {
+  color: #fff;
+}
+
+.icon-drop:before {
+  content: "\e000";
+}
+
+.icon-arrow-left:before {
+  content: "\f060";
+}
+
+// Place all the styles related to the Welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#cbp-spmenu-happy {
+  background-color: pink;
+  width: 240px;
+}
+
+#cbp-spmenu-sad {
+  background-color: blue;
+  width: 240px;
+}
+
+#cbp-spmenu-anger {
+  background-color: red;
+  width: 240px;
+}
+
+#cbp-spmenu-fear {
+  background-color: grey;
+  width: 240px;
+}
+
+
+.cbp-spmenu {
+  /* background: #151212; */
+  position: fixed;
+}
+
+.cbp-spmenu h3 {
+  color: #afdefa;
+  font-size: 1.9em;
+  padding: 20px;
+  margin: 0;
+  font-weight: 300;
+  
+}
+
+.cbp-spmenu a {
+  display: block;
+  color: #fff;
+  font-size: 1.1em;
+  font-weight: 300;
+}
+
+
+.cbp-spmenu a:active {
+  background: #afdefa;
+  color: #47a3da;
+}
+
+/* Orientation-dependent styles for the content of the menu */
+
+.cbp-spmenu-vertical {
+  width: 240c px;
+  height: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.cbp-spmenu-vertical a {
+ 
+  padding: 1em;
+}
+
+.cbp-spmenu-horizontal {
+  width: 100%;
+  height: 150px;
+  left: 0;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.cbp-spmenu-horizontal h3 {
+  height: 100%;
+  width: 20%;
+  float: left;
+}
+
+.cbp-spmenu-button {
+ font-family: 'Space Mono', monospace;
+ border: none;
+ background: none;
+ font-size: 22px;
+ outline: none;
+  
+
+}
+
+.cbp-spmenu-horizontal a {
+  float: left;
+  width: 20%;
+  padding: 0.8em;
+  border-left: 1px solid #258ecd;
+}
+
+/* Vertical menu that slides from the left or right */
+
+.cbp-spmenu-left {
+  left: -240px;
+}
+
+.cbp-spmenu-left.cbp-spmenu-open {
+  left: 0px;
+}
+
+
+
+
+
+
+
+/* Transitions */
+
+.cbp-spmenu,
+.cbp-spmenu-push {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.my-icon {
+    float: left;
+    position: absolute;
+    left: 20px;
+    }
+
+
+.cbp-spmenu-button {
+float: left;
+margin-left:50px;
+  
+}
