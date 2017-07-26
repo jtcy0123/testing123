@@ -6,7 +6,6 @@ class StoriesController < ApplicationController
   end
 
   def create
-    byebug
     story = Story.new(title: params[:story][:title], contents: params[:story][:contents])
     if story.save
       redirect_to story_path(story)
