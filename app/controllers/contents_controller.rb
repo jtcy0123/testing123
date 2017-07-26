@@ -33,7 +33,7 @@ class ContentsController < ApplicationController
     @comment = Comment.new
     @messages = Message.all
     @mood = Mood.find(params[:id])
-    @moods = Mood.all
+    @moods = Mood
 
       if params[:categoryx]==nil
         @contents = Content.where(mood_id: @mood.id).order("clicks DESC")
