@@ -23,7 +23,11 @@
             <% if @contents != [] %>
               <a href="<%= @contents.last.link %>">
                 <div class="well abc" style="padding: 0">
-                  <img src="https://www.w3schools.com/css/trolltunga.jpg" style="width: 100%;">
+                  <% if @mood.emotion == "sad" %>
+                    <img src="https://www.w3schools.com/css/trolltunga.jpg" style="width: 100%;">
+                  <% elsif @mood.emotion == "fear" %>
+                    <img src="http://www.katekaisercounseling.com/wp-content/uploads/2015/03/mountain-298999_1280-crop-fear-quote.jpg" style="width: 100%;">
+                  <% end %>
                   <h2><b style="padding-left: 20px"><%= @contents.last.subject %></b></h2>
                 </div>
               </a>
@@ -119,11 +123,10 @@
                   <%= form_for @content do |form| %>
                     <%= form.text_field :link, type: 'link', placeholder: 'paste url here', required: true %>
                     <%= form.hidden_field :mood_id, value: @mood.id %>
-                  <%= radio_button_tag(:categoryx, "news") %>
-                  <%= label_tag(:categoryy, "News") %>
-
-                  <%= radio_button_tag(:categoryx, "movie") %>
-                  <%= label_tag(:categoryy, "Movies") %>
+                    <%= radio_button_tag(:categoryx, "news") %>
+                    <%= label_tag(:categoryy, "News") %>
+                    <%= radio_button_tag(:categoryx, "movie") %>
+                    <%= label_tag(:categoryy, "Movies") %>
                     <%= form.submit "ADD", class: 'btn' %>
                   <% end %>
                 </div>
