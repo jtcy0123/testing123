@@ -13,47 +13,44 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <html lang="en" class="no-js">
-    <%= yield :head %>
-  
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title></title>
-    <meta name="description" content="Blueprint: Slide and Push Menus" />
-    <meta name="keywords" content="sliding menu, pushing menu, navigation, responsive, menu, css, jquery" />
-    <meta name="author" content="Codrops" />
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" type="text/css" href="css/default.css" />
-    <link rel="stylesheet" type="text/css" href="css/component.css" />
-    <script src="js/modernizr.custom.js"></script>
-     <meta name="author" content="www.twitter.com/cheeriottis">
-   <link rel="stylesheet" href="css/core.css">
-  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
-  <link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href=“https://fonts.googleapis.com/css?family=Raleway” rel=“stylesheet”>
-  <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
-  </head>
-  
-    
-
-  <body class="cbp-spmenu-push">
- 
-    <% %w(happy sad anger fear random).each do |emotion| %>
-      <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-<%= emotion %>">
-        <div class="menu-header">
-          <div align="center">  
-           <i class="fa fa-angle-double-left my-icon" style="font-size:24px"></i>Articles
-            <a href="#">Videos</a>
-            <a href="#">Blogs</a>
-            <a href="#">Podcasts</a>
+      <%= yield :head %>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title></title>
+      <meta name="description" content="Blueprint: Slide and Push Menus" />
+      <meta name="keywords" content="sliding menu, pushing menu, navigation, responsive, menu, css, jquery" />
+      <meta name="author" content="Codrops" />
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" type="text/css" href="css/default.css" />
+      <link rel="stylesheet" type="text/css" href="css/component.css" />
+      <script src="js/modernizr.custom.js"></script>
+      <meta name="author" content="www.twitter.com/cheeriottis">
+      <link rel="stylesheet" href="css/core.css">
+      <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
+      <link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link href=“https://fonts.googleapis.com/css?family=Raleway” rel=“stylesheet”>
+      <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+    </head>
+    <body class="cbp-spmenu-push">
+      <% %w(1happy 2sad 3anger 4fear).each do |emotion| %>
+        <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-<%= emotion %>">
+          <div class="menu-header">
+            <div align="center">
+              <i class="fa fa-angle-double-left my-icon" style="font-size:24px"></i>Articles
+              <%= link_to "All", content_path(:categoryx => nil, :id => emotion[0].to_i) %>
+              <%= link_to "News", content_path(:categoryx => "news", :id => emotion[0].to_i) %>
+              <%= link_to "Movies", content_path(:categoryx => "movie", :id => emotion[0].to_i) %>
+              <%= link_to "Videos", content_path(:categoryx => "video", :id => emotion[0].to_i) %>
+              <%= link_to "Blogs", content_path(:categoryx => "blog", :id => emotion[0].to_i) %>
+              <%= link_to "Podcasts", content_path(:categoryx => "podcast", :id => emotion[0].to_i) %>
+            </div>
           </div>
-        </div>
-      </nav>
-    <% end %>    
-  
-   
-<div class="navbar-header">
+        </nav>
+      <% end %>
+
+ <div class="navbar-header">
       <a class="navbar-brand" href="#">Felen</a>
     </div>
     <div id="nav">
@@ -102,22 +99,22 @@
      
   
 </nav>  <!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
-    <script src="js/classie.js"></script>
-    <script>
-      var menuOpened
-        menuButtons = document.getElementsByClassName("cbp-spmenu-button")
-        showLeftPush = document.getElementById( 'showLeftPush' ),
-        showRightPush = document.getElementById( 'showRightPush' ),
-        body = document.body;
-        for (var i = 0; i < menuButtons.length; i++) {
-          menuButtons[i].onclick = function() {
-            var menuTargetId = this.dataset.target
-            if(menuOpened) {
-              // its opened, clicked on the same button
-              if(menuOpened.id === menuTargetId) {
-                classie.toggle(menuOpened, 'cbp-spmenu-open')
-                menuOpened = null
-              } else {
+      <script src="js/classie.js"></script>
+      <script>
+        var menuOpened
+          menuButtons = document.getElementsByClassName("cbp-spmenu-button")
+          showLeftPush = document.getElementById( 'showLeftPush' ),
+          showRightPush = document.getElementById( 'showRightPush' ),
+          body = document.body;
+          for (var i = 0; i < menuButtons.length; i++) {
+            menuButtons[i].onclick = function() {
+              var menuTargetId = this.dataset.target
+              if(menuOpened) {
+                // its opened, clicked on the same button
+                if(menuOpened.id === menuTargetId) {
+                  classie.toggle(menuOpened, 'cbp-spmenu-open')
+                  menuOpened = null
+                } else {
                 // its opened, clicked on a different button
                 classie.toggle(menuOpened, 'cbp-spmenu-open')
                 menuOpened = document.getElementById(menuTargetId)
@@ -130,67 +127,66 @@
             }
           };
         }
-      // showLeft.onclick = function() {
-      //   var menuTargetId = this.dataset.target
-      //   if(menuOpened) {
-      //     debugger
-      //     if(menuOpened.id === menuTargetId) {
-      //       classie.toggle(menuOpened, 'cbp-spmenu-open')
-      //       menuOpened = null
-      //     } else {
-      //       classie.toggle(menuOpened, 'cbp-spmenu-open')
-      //       menuOpened = document.getElementById(menuTargetId)
-      //       classie.toggle(menuOpened, 'cbp-spmenu-open')
-      //     }
-      //   } else {
-      //     menuOpened = document.getElementById(menuTargetId)
-      //     classie.toggle(menuOpened, 'cbp-spmenu-open')
-      //   }
-      // };
-      // showRight.onclick = function() {
-      //   var menuTargetId = this.dataset.target
-      //   if(menuOpened) {
-      //     debugger
-      //     if(menuOpened.id === menuTargetId) {
-      //       classie.toggle(menuOpened, 'cbp-spmenu-open')
-      //       menuOpened = null
-      //     } else {
-      //       classie.toggle(menuOpened, 'cbp-spmenu-open')
-      //       menuOpened = document.getElementById(menuTargetId)
-      //       classie.toggle(menuOpened, 'cbp-spmenu-open')
-      //     }
-      //   } else {
-      //     menuOpened = document.getElementById(menuTargetId)
-      //     classie.toggle(menuOpened, 'cbp-spmenu-open')
-      //   }
-      // };
-      showTop.onclick = function() {
-        classie.toggle( this, 'active' );
-        classie.toggle( menuLeft, 'cbp-spmenu-open' );
-        disableOther( 'showTop' );
-      };
-      showBottom.onclick = function() {
-        classie.toggle( this, 'active' );
-        classie.toggle( menuLeft, 'cbp-spmenu-open' );
-        disableOther( 'showBottom' );
-      };
-       function disableOther( button ) {
-        if( button !== 'showLeft' ) {
-          classie.toggle( showLeft, 'disabled' );
-        }
-        if( button !== 'showRight' ) {
-          classie.toggle( showRight, 'disabled' );
-        }
-        if( button !== 'showTop' ) {
-          classie.toggle( showTop, 'disabled' );
-        }
-        if( button !== 'showBottom' ) {
-          classie.toggle( showBottom, 'disabled' );
-        }
-     
-      }
-    </script>
-     <%= yield %>
-
-  </body>
-</html>
+          // showLeft.onclick = function() {
+          //   var menuTargetId = this.dataset.target
+          //   if(menuOpened) {
+          //     debugger
+          //     if(menuOpened.id === menuTargetId) {
+          //       classie.toggle(menuOpened, 'cbp-spmenu-open')
+          //       menuOpened = null
+          //     } else {
+          //       classie.toggle(menuOpened, 'cbp-spmenu-open')
+          //       menuOpened = document.getElementById(menuTargetId)
+          //       classie.toggle(menuOpened, 'cbp-spmenu-open')
+          //     }
+          //   } else {
+          //     menuOpened = document.getElementById(menuTargetId)
+          //     classie.toggle(menuOpened, 'cbp-spmenu-open')
+          //   }
+          // };
+          // showRight.onclick = function() {
+          //   var menuTargetId = this.dataset.target
+          //   if(menuOpened) {
+          //     debugger
+          //     if(menuOpened.id === menuTargetId) {
+          //       classie.toggle(menuOpened, 'cbp-spmenu-open')
+          //       menuOpened = null
+          //     } else {
+          //       classie.toggle(menuOpened, 'cbp-spmenu-open')
+          //       menuOpened = document.getElementById(menuTargetId)
+          //       classie.toggle(menuOpened, 'cbp-spmenu-open')
+          //     }
+          //   } else {
+          //     menuOpened = document.getElementById(menuTargetId)
+          //     classie.toggle(menuOpened, 'cbp-spmenu-open')
+          //   }
+          // };
+          showTop.onclick = function() {
+            classie.toggle( this, 'active' );
+            classie.toggle( menuLeft, 'cbp-spmenu-open' );
+            disableOther( 'showTop' );
+          };
+          showBottom.onclick = function() {
+            classie.toggle( this, 'active' );
+            classie.toggle( menuLeft, 'cbp-spmenu-open' );
+            disableOther( 'showBottom' );
+          };
+           function disableOther( button ) {
+            if( button !== 'showLeft' ) {
+              classie.toggle( showLeft, 'disabled' );
+            }
+            if( button !== 'showRight' ) {
+              classie.toggle( showRight, 'disabled' );
+            }
+            if( button !== 'showTop' ) {
+              classie.toggle( showTop, 'disabled' );
+            }
+            if( button !== 'showBottom' ) {
+              classie.toggle( showBottom, 'disabled' );
+            }
+          }
+      </script>
+      <%= yield %>
+      <%= render partial: '/welcome/modal' %>
+    </body>
+  </html>

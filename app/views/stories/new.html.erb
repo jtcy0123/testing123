@@ -1,0 +1,46 @@
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container-fluid">
+  <div class="row">
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script>
+      tinymce.init({
+          selector: "textarea",
+          menu: {
+            table: {title: 'Table', items: 'inserttable tableprops deletetable | cell row column'}
+          },
+          plugins: [
+              "advlist autolink lists link image charmap preview anchor",
+              "searchreplace visualblocks code fullscreen",
+              "insertdatetime media table contextmenu paste"
+          ],
+          toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+      });
+    </script>
+    <!-- the comment box -->
+    <div style="margin: 10px;">
+      <h3><i class="fa fa-paper-plane-o fa-lg">&emsp;<b>MY STORY</b></i></h3>
+      <form role="form" action="../stories" method="post">
+        <div class="form-group">
+          <input type="text" name="story[title]" placeholder="  Subject" style="width: 100%"><hr>
+          <textarea class="form-control" rows="18" name="story[contents]"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary"><i class="fa fa-reply"></i> Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+<style type="text/css">
+  body {
+    background: url(https://www.planwallpaper.com/static/images/6790904-free-background-wallpaper.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+  h3 {
+    color: white;
+  }
+  input {
+    height: 40px;
+    font-size: 30px;
+    background-color: #ccc;
+  }
+</style>

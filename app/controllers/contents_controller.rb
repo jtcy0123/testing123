@@ -11,17 +11,17 @@ class ContentsController < ApplicationController
     x = Indico.emotion(content.subject)
     y = x.sort_by{|emo,num| num}.reverse
     z = y[0][0]
-      if    z == 'joy'#<=====
-        content.mood_id = 1
-      elsif z == 'sadness'
-        content.mood_id = 2
-      elsif z == 'fear'
-        content.mood_id = 3
-      elsif z == 'anger'
-        content.mood_id = 4
-      else
-        content.mood_id = 5
-      end
+    if    z == 'joy'#<=====
+      content.mood_id = 1
+    elsif z == 'sadness'
+      content.mood_id = 2
+    elsif z == 'fear'
+      content.mood_id = 3
+    elsif z == 'anger'
+      content.mood_id = 4
+    else
+      content.mood_id = 5
+    end
     if content.save
       redirect_to content_path(content.mood_id)
     end
@@ -33,13 +33,13 @@ class ContentsController < ApplicationController
     @comment = Comment.new
     @messages = Message.all
     @mood = Mood.find(params[:id])
-    @moods = Mood.all
+    @moods = Mood
 
-      if params[:categoryx]==nil
-        @contents = Content.where(mood_id: @mood.id).order("clicks DESC")
-      else
-        @contents = Content.where(mood_id: @mood.id, category: params[:categoryx]).order("clicks DESC")
-      end
+    if params[:categoryx]==nil
+      @contents = Content.where(mood_id: @mood.id).order("count DESC")
+    else
+      @contents = Content.where(mood_id: @mood.id, category: params[:categoryx]).order("count DESC")
+    end
 
     render template: "contents/show"
   end
@@ -50,9 +50,6 @@ class ContentsController < ApplicationController
     d += 1
     c.update(count:d)
     redirect_to c.link
-  end
- 
-  def new
   end
 
   def click
