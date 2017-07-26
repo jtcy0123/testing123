@@ -34,23 +34,23 @@
       <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
     </head>
     <body class="cbp-spmenu-push">
-      <% %w(happy sad anger fear random).each do |emotion| %>
+      <% %w(happy sad anger fear).each do |emotion| %>
         <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-<%= emotion %>">
           <div class="menu-header">
             <div align="center">
               <i class="fa fa-angle-double-left my-icon" style="font-size:24px"></i>Articles
-              <%= link_to "All", content_path(:categoryx => nil, :id => emotion[0].to_i) %>
-              <%= link_to "News", content_path(:categoryx => "news", :id => emotion[0].to_i) %>
-              <%= link_to "Movies", content_path(:categoryx => "movie", :id => emotion[0].to_i) %>
-              <%= link_to "Videos", content_path(:categoryx => "video", :id => emotion[0].to_i) %>
-              <%= link_to "Blogs", content_path(:categoryx => "blog", :id => emotion[0].to_i) %>
-              <%= link_to "Podcasts", content_path(:categoryx => "podcast", :id => emotion[0].to_i) %>
+              <%= link_to "All", content_path(:categoryx => nil, :id => Mood.find_by(emotion: emotion).id) %>
+              <%= link_to "News", content_path(:categoryx => "news", :id => Mood.find_by(emotion: emotion).id) %>
+              <%= link_to "Movies", content_path(:categoryx => "movie", :id => Mood.find_by(emotion: emotion).id) %>
+              <%= link_to "Videos", content_path(:categoryx => "video", :id => Mood.find_by(emotion: emotion).id) %>
+              <%= link_to "Blogs", content_path(:categoryx => "blog", :id => Mood.find_by(emotion: emotion).id) %>
+              <%= link_to "Podcasts", content_path(:categoryx => "podcast", :id => Mood.find_by(emotion: emotion).id) %>
             </div>
           </div>
         </nav>
       <% end %>
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">Felen</a>
+        <a class="navbar-brand" href="/">Felen</a>
       </div>
       <div id="nav">
         <ul>
