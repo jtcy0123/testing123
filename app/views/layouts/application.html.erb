@@ -74,20 +74,25 @@
          <button class="cbp-spmenu-button" data-target="cbp-spmenu-fear">Random</button>
          </li>
          </ul>
-         <div class="pull-right">
+         <!-- <div class="pull-right"> -->
          <ul class="right-wrapper">
      <% if signed_in? %>
       <!-- Signed in as: <%= current_user.email %> -->
       <%= button_to 'Sign out', sign_out_path, method: :delete%>
-    <% else %>
-
-    <li> <a data-toggle="modal" data-target="#loginModal"><i class="fa fa-user-circle-o" style="font-size:24px"></i></a> </li>
-   <li> <i class="fa fa-search" style="font-size:24px"></i></li>
-    <% end %>
+    <% else %>  
     <div id="flash">
       <% flash.each do |key, value| %>
         <div class="flash <%= key %>"><%= value %></div>
       <% end %>
+      <% end %>
+    <li class="social-media"> <a data-toggle="modal" data-target="#loginModal"><i class="fa fa-user-circle-o" style="font-size:24px"></i></a> </li>
+    <li class="social-media"> <i class="fa fa-search" style="font-size:24px"></i></li>
+    <li class="social-media"> <i class="fa fa-youtube" style="font-size:24px"></i></li>
+    <li class="social-media"> <i class="fa fa-twitter" style="font-size:24px"></i></li>
+    <li class="social-media"> <i class="fa fa-facebook" style="font-size:24px"></i></li>
+   
+    </ul>
+<!-- </div>   -->
       
  </div>  
     </div>
