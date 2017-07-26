@@ -1,2 +1,6 @@
-<h1>show here</h1>
-<%=raw @story.contents %>
+<div id="story_page">
+  <b id="storyTitle">
+    <h1><%= @story.title.upcase %></h1>
+  </b>
+  <%=raw @story.contents %>
+</div>

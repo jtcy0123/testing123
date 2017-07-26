@@ -8,32 +8,33 @@
         <div id="fear" class="background">
         <% end %>
         <div class="container-fluid">
-          <h1><%= @mood.emotion.upcase %></h1>
-          <!--           <%= link_to 'HOME', root_path %>
-          <%= link_to 'HAPPY', content_path(@moods.find(1)) %>
-          <%= link_to 'SAD', content_path(@moods.find(2)) %>
-          <%= link_to 'FEAR', content_path(@moods.find(3)) %>
-          <%= link_to 'ANGER', content_path(@moods.find(4)) %> -->
-          <hr>
-          <%= render partial: "content_type" %>
-          <%= link_to 'Video' %>&emsp;<%= link_to 'Movie' %>&emsp;<%= link_to 'Podcast' %>&emsp;<%= link_to 'Article' %>&emsp;<%= link_to 'Blog' %>
-          <hr>
-          <!--  -->
+          <h1 style="text-align: center;"><%= @mood.emotion.upcase %><button data-toggle="modal" data-target="#addModal">ADD</button></h1>
           <div class="col-md-9" id="leftDiv">
             <% if @contents != [] %>
               <a href="/redirect/<%= @contents.first.id%>" target='_blank'>
                 <div class="well abc" style="padding: 0">
-                  <% if @mood.emotion == "sad" %>
-                    <img src="https://www.w3schools.com/css/trolltunga.jpg" style="width: 100%;">
+                  <% if @mood.emotion == "happy" %>
+                    <img id="topImg" src="https://i.ytimg.com/vi/FBHEF1nxbi0/maxresdefault.jpg" style="width: 100%;">
+                  <% elsif @mood.emotion == "sad" %>
+                    <img id="topImg" src="https://www.w3schools.com/css/trolltunga.jpg" style="width: 100%;">
                   <% elsif @mood.emotion == "fear" %>
-                    <img src="http://www.katekaisercounseling.com/wp-content/uploads/2015/03/mountain-298999_1280-crop-fear-quote.jpg" style="width: 100%;">
+                    <img id="topImg" src="http://www.katekaisercounseling.com/wp-content/uploads/2015/03/mountain-298999_1280-crop-fear-quote.jpg" style="width: 100%;">
+                  <% elsif @mood.emotion == "anger" %>
+                    <img id="topImg" src="http://4.bp.blogspot.com/-nT8UvC0pKQo/VWAglJMzF3I/AAAAAAAAMMQ/oavbBwZS4t8/s1600/Angry-Status-for-Whatsapp-01.jpg" style="width: 100%;">
                   <% end %>
                   <h2><b style="padding-left: 20px"><%= @contents.first.subject %></b></h2>
                 </div>
               </a>
             <% end %>
             <!--  -->
-            <div class="col-md-3 ">some stories</div>
+            <div class="col-md-3 well abc">
+              <a href="/stories/new">share your story</a>
+              <% @stories.each do |s| %>
+                <div class="well row">
+                  <%= link_to s.title, story_path(s) %>
+                </div>
+              <% end %>
+            </div>
             <!--  -->
             <!-- content div -->
             <% if @contents != [] %>
@@ -84,9 +85,9 @@
           <!--  -->
           <!--  -->
           <div class="col-md-3">
-            <div class="row">
+            <!-- <div class="row">
               <a href="/stories/new"><button>ADD STORY</button></a>share your stories
-            </div>
+            </div> -->
             <!-- chat div -->
             <div class="chatbox row">
               <h1>Chat</h1>
@@ -108,8 +109,8 @@
           </div>
           <!--  -->
           <!--  -->
-          <hr style="clear: both;">
-          <button data-toggle="modal" data-target="#addModal">ADD</button>
+          <!-- <hr style="clear: both;"> -->
+          <!-- <button data-toggle="modal" data-target="#addModal">ADD</button> -->
           <!-- Modal for adding links -->
           <div class="modal fade" id="addModal" role="dialog">
             <div class="modal-dialog">

@@ -5,8 +5,6 @@
 
 }
 
-
-
 .container {
   padding: 20px;
 }
@@ -14,9 +12,9 @@
 .profile-card {
     background-color: #222222;
   margin-bottom: 20px;
-			
-		}
-		
+      
+    }
+    
 .profile-pic {
   border-radius: 50%;
   position: absolute;
@@ -27,50 +25,50 @@
   z-index: 1;
   max-width: 100px;
   -webkit-transition: all 0.4s;
-		  transition: all 0.4s;
-				}
+      transition: all 0.4s;
+        }
 
-				
+        
 .profile-info {
-		color: #BDBDBD;
-		padding: 25px;
-	    position: relative;
-	    margin-top: 15px;
-				}
-		
+    color: #BDBDBD;
+    padding: 25px;
+      position: relative;
+      margin-top: 15px;
+        }
+    
 .profile-info h2 {
-	color: #E8E8E8;
+  color: #E8E8E8;
     letter-spacing: 4px;
-	  padding-bottom: 12px;
-				}
-				
+    padding-bottom: 12px;
+        }
+        
 .profile-info span {
-	display: block;
+  display: block;
     font-size: 12px;
     color: #4CB493;
-	letter-spacing: 2px;
-			}
+  letter-spacing: 2px;
+      }
 
 .profile-info a {
-	 color: #4CB493;
-		}
+   color: #4CB493;
+    }
 .profile-info i {
-	    padding: 15px 35px 0px 35px;
-		}
-		
+      padding: 15px 35px 0px 35px;
+    }
+    
 
 .profile-card:hover .profile-pic {
-	
-	transform: scale(1.1);
-		}
+  
+  transform: scale(1.1);
+    }
 
 .profile-card:hover .profile-info hr  {
-	opacity: 1;
-		}
-		
-		
-		
-		
+  opacity: 1;
+    }
+    
+    
+    
+    
 /* Underline From Center */
 .hvr-underline-from-center {
   display: inline-block;
@@ -111,4 +109,4 @@
 
 .thumbnail {
     padding:0;
-}
+  }       }
