@@ -1,7 +1,7 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
   <div class="row">
-    <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
     <script>
       tinymce.init({
           selector: "textarea",
@@ -20,13 +20,13 @@
     <!-- the comment box -->
     <div class="well">
       <h4><i class="fa fa-paper-plane-o"></i>Add your story:</h4>
-      <form role="form">
+      <form role="form" action="../stories" method="post">
         <div class="form-group">
           <hr>
-          <input type="" name="" placeholder="Subject" style="width: 100%"><hr>
-          <textarea class="form-control" rows="18"></textarea>
+          <input type="text" name="story[title]" placeholder="Subject" style="width: 100%"><hr>
+          <textarea class="form-control" rows="18" name="story[contents]"></textarea>
         </div>
-        <button type="submit" name="say" value="" class="btn btn-primary"><i class="fa fa-reply"></i> Submit</button>
+        <button type="submit" class="btn btn-primary"><i class="fa fa-reply"></i> Submit</button>
       </form>
     </div>
   </script>
