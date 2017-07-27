@@ -10,6 +10,6 @@
 ActiveRecord::Base.transaction do
   Mood.create(emotion: "happy")
   Mood.create(emotion: "sad")
-  Mood.create(emotion: "fear")
   Mood.create(emotion: "anger")
+  Mood.create(emotion: "fear")
 end

@@ -1,14 +1,23 @@
 <% if @mood.emotion == "happy" %>
+<% mood = "amazing" %>
   <div id="happy" class="background">
   <% elsif @mood.emotion == "sad" %>
+<% mood = "saddening" %>
     <div id="sad" class="background">
     <% elsif @mood.emotion == "anger" %>
+<% mood = "shocking" %>
       <div id="anger" class="background">
       <% elsif @mood.emotion == "fear" %>
+<% mood = "thrilling" %>
         <div id="fear" class="background">
         <% end %>
         <div class="container-fluid">
-          <h1 style="text-align: center;"><%= @mood.emotion.upcase %><button data-toggle="modal" data-target="#addModal">ADD</button></h1>
+          <h1 style="text-align: center;"><%= mood.upcase %>
+          <% if signed_in? && current_user.status == 1 %>
+          <button data-toggle="modal" data-target="#addModal">ADD</button></h1>
+          <% else %>
+          </h1>
+          <% end %>
           <div class="col-md-9" id="leftDiv">
             <% if @contents != [] %>
               <a href="/redirect/<%= @contents.first.id%>" target='_blank'>
@@ -28,7 +37,7 @@
             <% end %>
             <!--  -->
             <div class="col-md-3 well abc">
-              <a href="/stories/new">share your story</a>
+              <a href="/stories/new">SHARE YOUR STORY</a>
               <% @stories.each do |s| %>
                 <div class="well row">
                   <%= link_to s.title, story_path(s) %>

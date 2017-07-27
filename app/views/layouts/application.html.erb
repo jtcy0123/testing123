@@ -51,19 +51,19 @@
     <div id="nav">
       <ul>
         <li class="nav_button">
-          <button class="cbp-spmenu-button" data-target="cbp-spmenu-happy">Happy</button>
+          <button class="cbp-spmenu-button" data-target="cbp-spmenu-happy">Amazing!</button>
         </li>
         <li class="nav_button">
-          <button  class="cbp-spmenu-button" data-target="cbp-spmenu-sad">Sad</button>
+          <button  class="cbp-spmenu-button" data-target="cbp-spmenu-sad">Saddening!</button>
         </li>
         <li class="nav_button">
-          <button class="cbp-spmenu-button" data-target="cbp-spmenu-anger">Anger</button>
+          <button class="cbp-spmenu-button" data-target="cbp-spmenu-anger">Shocking!</button>
         </li>
         <li class="nav_button">
-          <button class="cbp-spmenu-button" data-target="cbp-spmenu-fear">Fear</button>
+          <button class="cbp-spmenu-button" data-target="cbp-spmenu-fear">Thrilling!</button>
         </li>
         <li class="nav_button">
-          <button class="cbp-spmenu-button" data-target="cbp-spmenu-fear">Random</button>
+          <button class="cbp-spmenu-button" data-target="cbp-spmenu-fear">Random?</button>
         </li>
       </ul>
       <!-- <div class="pull-right"> -->
@@ -79,7 +79,7 @@
         <li class="social-media"> <i class="fa fa-facebook" style="font-size:24px"></i></li>
         <!--  -->
         <div class='dropdown' >
-          <li class="social-media"> <i class="fa fa-search" style="font-size:24px"></i></li>
+          <li class="social-media"><i class="fa fa-search" style="font-size:24px"></i></li>
           <div class="dropdown-content">
             <%= form_tag search_path, :method => :post do %>
               <%= label_tag(:q, "Search for:") %>
@@ -94,8 +94,8 @@
           </div>
         </div>
         <!--  -->
-        <li><% if signed_in? %>
-            <%= button_to 'Sign out', sign_out_path, method: :delete, class: "btn",id: "sign-out", style: "float: right;" %>
+        <li style="float: right;"><% if signed_in? %>
+            <%= button_to 'Sign out', sign_out_path, method: :delete, class: "btn",id: "sign-out" %>
           <% else %>
             <div id="flash">
               <% flash.each do |key, value| %>
@@ -133,42 +133,13 @@
           menuOpened = document.getElementById(menuTargetId)
           classie.toggle(menuOpened, 'cbp-spmenu-open')
         }
+        // document.body.onclick = function() {
+        //   $('.cbp-spmenu-vertical').toggle()
+        // }
       };
     }
-  // showLeft.onclick = function() {
-  //   var menuTargetId = this.dataset.target
-  //   if(menuOpened) {
-  //     debugger
-  //     if(menuOpened.id === menuTargetId) {
-  //       classie.toggle(menuOpened, 'cbp-spmenu-open')
-  //       menuOpened = null
-  //     } else {
-  //       classie.toggle(menuOpened, 'cbp-spmenu-open')
-  //       menuOpened = document.getElementById(menuTargetId)
-  //       classie.toggle(menuOpened, 'cbp-spmenu-open')
-  //     }
-  //   } else {
-  //     menuOpened = document.getElementById(menuTargetId)
-  //     classie.toggle(menuOpened, 'cbp-spmenu-open')
-  //   }
-  // };
-  // showRight.onclick = function() {
-  //   var menuTargetId = this.dataset.target
-  //   if(menuOpened) {
-  //     debugger
-  //     if(menuOpened.id === menuTargetId) {
-  //       classie.toggle(menuOpened, 'cbp-spmenu-open')
-  //       menuOpened = null
-  //     } else {
-  //       classie.toggle(menuOpened, 'cbp-spmenu-open')
-  //       menuOpened = document.getElementById(menuTargetId)
-  //       classie.toggle(menuOpened, 'cbp-spmenu-open')
-  //     }
-  //   } else {
-  //     menuOpened = document.getElementById(menuTargetId)
-  //     classie.toggle(menuOpened, 'cbp-spmenu-open')
-  //   }
-  // };
+
+
   showTop.onclick = function() {
     classie.toggle( this, 'active' );
     classie.toggle( menuLeft, 'cbp-spmenu-open' );
