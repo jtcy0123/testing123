@@ -10,27 +10,31 @@
       <div class="modal-body" style="text-align: center;">
         <%= form_for :session, url: session_path, remote: true do |form| %>
           <div class="text-field">
-            <%= form.text_field :email, type: 'email', placeholder: "email"  %>
+            <%= form.text_field :email, type: 'email', placeholder: "email", style: "display: inline" %><label class="input-group-addon glyphicon glyphicon-user" style="display: inline;"></label>
           </div>
+          <br>
           <div class="password-field">
-            <%= form.password_field :password , placeholder: "password" %>
+            <%= form.password_field :password , placeholder: "password" %><label for="uPassword" class="input-group-addon glyphicon glyphicon-lock" style="display: inline;"></label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> Remember me
+            </label>
           </div>
           <div class="submit-field">
             <%= form.submit class: 'btn' %>
           </div>
-          <br>
-          <div class="other-links">
-            <% if Clearance.configuration.allow_sign_up? %>
-              new user?
-              <a id="signupBtn" data-toggle="modal" data-target="#signupModal">create new account</a><br>
-            <% end %>
-            forgot your password?
-            <%= link_to "click here", new_password_path %>
-          </div>
         <% end %>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <div class="other-links">
+          <% if Clearance.configuration.allow_sign_up? %>
+            new user?
+            <a id="signupBtn" data-toggle="modal" data-target="#signupModal">create new account</a><br>
+          <% end %>
+          forgot your password?
+          <%= link_to "click here", new_password_path %>
+        </div>
       </div>
     </div>
   </div>
@@ -50,15 +54,31 @@
           <div class="submit-field">
             <%= form.submit class: 'btn' %>
           </div>
-          <div class="other-links">
-            already have an account?
-            <a id="loginBtn" data-toggle="modal" data-target="#loginModal">login here</a>
-          </div>
         <% end %>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <div class="other-links">
+          already have an account?
+          <a id="loginBtn" data-toggle="modal" data-target="#loginModal">login here</a>
+        </div>
       </div>
     </div>
   </div>
 </div>
+<style type="text/css">
+  .modal-dialog {
+    width: 300px;
+  }
+  .modal-footer {
+    text-align: center;
+    height: 70px;
+    margin: 0;
+  }
+  .modal-footer .btn {
+    font-weight: bold;
+  }
+  .input-group-addon {
+    color: #fff;
+    background: #ccc;
+  }
+</style>

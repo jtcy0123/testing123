@@ -2,7 +2,11 @@ class StoriesController < ApplicationController
   protect_from_forgery
 
   def new
-    @story = Story.new
+    if signed_in?
+      @story = Story.new
+    else
+      redirect_to root_path
+    end
   end
 
   def create
@@ -15,6 +19,9 @@ class StoriesController < ApplicationController
   end
 
   def show
+    if current_user
+      @like = Like.where(story_id: params[:id]).find_by(user_id: current_user.id)
+    end
     @story = Story.find(params[:id])
   end
 
