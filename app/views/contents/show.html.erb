@@ -23,13 +23,13 @@
               <a href="/redirect/<%= @contents.first.id%>" target='_blank'>
                 <div class="well abc" style="padding: 0">
                   <% if @mood.emotion == "happy" %>
-                    <img id="topImg" src="https://i.ytimg.com/vi/FBHEF1nxbi0/maxresdefault.jpg" style="width: 100%;">
+                  <%= image_tag "happy.jpg", id: "topImg", style: "width: 100%;" %>
                   <% elsif @mood.emotion == "sad" %>
-                    <img id="topImg" src="https://www.w3schools.com/css/trolltunga.jpg" style="width: 100%;">
+                  <%= image_tag "sad.jpg", id: "topImg", style: "width: 100%;" %>
                   <% elsif @mood.emotion == "fear" %>
-                    <img id="topImg" src="http://www.katekaisercounseling.com/wp-content/uploads/2015/03/mountain-298999_1280-crop-fear-quote.jpg" style="width: 100%;">
+                  <%= image_tag "fear.jpg", id: "topImg", style: "width: 100%;" %>
                   <% elsif @mood.emotion == "anger" %>
-                    <img id="topImg" src="http://4.bp.blogspot.com/-nT8UvC0pKQo/VWAglJMzF3I/AAAAAAAAMMQ/oavbBwZS4t8/s1600/Angry-Status-for-Whatsapp-01.jpg" style="width: 100%;">
+                  <%= image_tag "anger.jpg", id: "topImg", style: "width: 100%;" %>
                   <% end %>
                   <h2><b style="padding-left: 20px"><%= @contents.first.subject %></b></h2>
                 </div>

@@ -10,7 +10,7 @@ class StoriesController < ApplicationController
   end
 
   def create
-    story = Story.new(title: params[:story][:title], contents: params[:story][:contents])
+    story = Story.new(title: params[:story][:title], contents: params[:story][:contents], user_id: params[:story][:user_id])
     if story.save
       redirect_to story_path(story)
     else
