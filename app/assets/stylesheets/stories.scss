@@ -2,11 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#storyTitle {
-  text-align: center;
+#story_title {
+  font-family: Anton;
 }
-
+#story_header {
+  margin-top: 10px;
+  text-align: center;
+  padding: 10px 0;
+  border: 5px black;
+  border-style: solid none;
+  border-width: 2px;
+}
 #story_page {
-  background-image: url(https://s-media-cache-ak0.pinimg.com/originals/b5/8b/db/b58bdbddd7ec2df3ab022c81e9f2ea39.jpg); 
+  background-image: url(https://s-media-cache-ak0.pinimg.com/originals/b5/8b/db/b58bdbddd7ec2df3ab022c81e9f2ea39.jpg);
   height: 90vh;
+}
+.sideStory {
+  background-color: rgba(255, 255, 255, 0.4);
 }
