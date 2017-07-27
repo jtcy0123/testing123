@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   root to: "welcome#index"
 
   resources :contents, only: [:create, :show]
-  resources :stories, only: [:create, :show, :new]
+  resources :stories, only: [:create, :show]
+  get "/:id/stories/new" => "stories#new", as: "new_story"
   # get "/stories/:id/preview" => "stories#preview", as: "preview"
   resources :comments, only: [:create]
   resources :likes, only: [:create]
