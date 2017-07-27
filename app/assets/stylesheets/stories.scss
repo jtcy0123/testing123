@@ -12,11 +12,16 @@
   border: 5px black;
   border-style: solid none;
   border-width: 2px;
+  background-color: rgba(255, 255, 255, 0.6);
 }
 #story_page {
   background-image: url(https://s-media-cache-ak0.pinimg.com/originals/b5/8b/db/b58bdbddd7ec2df3ab022c81e9f2ea39.jpg);
   height: 90vh;
 }
+#story_body {
+  background-color: rgba(255, 255, 255, 0.6);
+}
 .sideStory {
+  margin-top: 100px;
   background-color: rgba(255, 255, 255, 0.4);
 }

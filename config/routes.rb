@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   resources :contents, only: [:create, :show]
   resources :stories, only: [:create, :show, :new]
+  # get "/stories/:id/preview" => "stories#preview", as: "preview"
   resources :comments, only: [:create]
+  resources :likes, only: [:create]
   resources :messages, only: [:index, :new, :create]
 
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]

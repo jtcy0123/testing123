@@ -12,180 +12,173 @@
     <script type="text/javascript" src="http://localhost:9292/faye.js"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <html lang="en" class="no-js">
-      <%= yield :head %>
-      <meta charset="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title></title>
-      <meta name="description" content="Blueprint: Slide and Push Menus" />
-      <meta name="keywords" content="sliding menu, pushing menu, navigation, responsive, menu, css, jquery" />
-      <meta name="author" content="Codrops" />
-      <link rel="shortcut icon" href="../favicon.ico">
-      <link rel="stylesheet" type="text/css" href="css/default.css" />
-      <link rel="stylesheet" type="text/css" href="css/component.css" />
-      <script src="js/modernizr.custom.js"></script>
-      <meta name="author" content="www.twitter.com/cheeriottis">
-      <link rel="stylesheet" href="css/core.css">
-      <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
-      <link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <link href=“https://fonts.googleapis.com/css?family=Raleway” rel=“stylesheet”>
-      <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
-    </head>
-    <body class="cbp-spmenu-push">
-      <% %w(happy sad anger fear).each do |emotion| %>
-        <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-<%= emotion %>">
-          <div class="menu-header">
-            <div align="center">
-              <i class="fa fa-angle-double-left my-icon" style="font-size:24px"></i>Articles
-              <%= link_to "All", content_path(:categoryx => nil, :id => Mood.find_by(emotion: emotion).id) %>
-              <%= link_to "News", content_path(:categoryx => "news", :id => Mood.find_by(emotion: emotion).id) %>
-              <%= link_to "Movies", content_path(:categoryx => "movie", :id => Mood.find_by(emotion: emotion).id) %>
-              <%= link_to "Videos", content_path(:categoryx => "video", :id => Mood.find_by(emotion: emotion).id) %>
-              <%= link_to "Blogs", content_path(:categoryx => "blog", :id => Mood.find_by(emotion: emotion).id) %>
-              <%= link_to "Podcasts", content_path(:categoryx => "podcast", :id => Mood.find_by(emotion: emotion).id) %>
-            </div>
+    <%= yield :head %>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blueprint: Slide and Push Menus" />
+    <meta name="keywords" content="sliding menu, pushing menu, navigation, responsive, menu, css, jquery" />
+    <meta name="author" content="Codrops" />
+    <link rel="shortcut icon" href="../favicon.ico">
+    <meta name="author" content="www.twitter.com/cheeriottis">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
+    <link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href=“https://fonts.googleapis.com/css?family=Raleway” rel=“stylesheet”>
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+  </head>
+  <body class="cbp-spmenu-push">
+    <% %w(happy sad anger fear).each do |emotion| %>
+      <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-<%= emotion %>">
+        <div class="menu-header">
+          <div align="center">
+            <i class="fa fa-angle-double-left my-icon" style="font-size:24px"></i>Articles
+            <%= link_to "All", content_path(:categoryx => nil, :id => Mood.find_by(emotion: emotion).id) %>
+            <%= link_to "News", content_path(:categoryx => "news", :id => Mood.find_by(emotion: emotion).id) %>
+            <%= link_to "Movies", content_path(:categoryx => "movie", :id => Mood.find_by(emotion: emotion).id) %>
+            <%= link_to "Videos", content_path(:categoryx => "video", :id => Mood.find_by(emotion: emotion).id) %>
+            <%= link_to "Blogs", content_path(:categoryx => "blog", :id => Mood.find_by(emotion: emotion).id) %>
+            <%= link_to "Podcasts", content_path(:categoryx => "podcast", :id => Mood.find_by(emotion: emotion).id) %>
           </div>
-        </nav>
-      <% end %>
-      <div class="navbar-header">
-        <a class="navbar-brand" href="/">
-          <div id="logo">Felen</div>
-        </a>
-      </div>
-      <div id="nav">
-        <ul>
-          <li class="nav_button">
-            <button class="cbp-spmenu-button" data-target="cbp-spmenu-happy">Happy</button>
-          </li>
-          <li class="nav_button">
-            <button  class="cbp-spmenu-button" data-target="cbp-spmenu-sad">Sad</button>
-          </li>
-          <li class="nav_button">
-            <button class="cbp-spmenu-button" data-target="cbp-spmenu-anger">Anger</button>
-          </li>
-          <li class="nav_button">
-            <button class="cbp-spmenu-button" data-target="cbp-spmenu-fear">Fear</button>
-          </li>
-          <li class="nav_button">
-            <button class="cbp-spmenu-button" data-target="cbp-spmenu-fear">Random</button>
-          </li>
-        </ul>
-        <!-- <div class="pull-right"> -->
-        <ul class="right-wrapper">
-          <% if signed_in? %>
-            <li><%= current_user.username %> <span class="badge"><%= current_user.point %></span></li>
-          <% else %>
-            <li class="social-media"> <a data-toggle="modal" data-target="#loginModal"><i class="fa fa-user-circle-o" style="font-size:24px"></i></a></li>
-          <% end%>
-          <li class="social-media"> <i class="fa fa-search" style="font-size:24px"></i></li>
-          <li class="social-media"> <i class="fa fa-youtube" style="font-size:24px"></i></li>
-          <li class="social-media"> <i class="fa fa-twitter" style="font-size:24px"></i></li>
-          <li class="social-media"> <i class="fa fa-facebook" style="font-size:24px"></i></li>
-          <li><% if signed_in? %>
-              <%= button_to 'Sign out', sign_out_path, method: :delete, class: "btn" %>
-            <% else %>
-              <div id="flash">
-                <% flash.each do |key, value| %>
-                  <div class="flash <%= key %>"><%= value %></div>
-                <% end %>
-              <% end %></li>
-          </ul>
-          <!-- </div>   -->
         </div>
+      </nav>
+    <% end %>
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">
+        <div id="logo">Felen</div>
+      </a>
+    </div>
+    <div id="nav">
+      <ul>
+        <li class="nav_button">
+          <button class="cbp-spmenu-button" data-target="cbp-spmenu-happy">Happy</button>
+        </li>
+        <li class="nav_button">
+          <button  class="cbp-spmenu-button" data-target="cbp-spmenu-sad">Sad</button>
+        </li>
+        <li class="nav_button">
+          <button class="cbp-spmenu-button" data-target="cbp-spmenu-anger">Anger</button>
+        </li>
+        <li class="nav_button">
+          <button class="cbp-spmenu-button" data-target="cbp-spmenu-fear">Fear</button>
+        </li>
+        <li class="nav_button">
+          <button class="cbp-spmenu-button" data-target="cbp-spmenu-fear">Random</button>
+        </li>
+      </ul>
+      <!-- <div class="pull-right"> -->
+      <ul class="right-wrapper">
+        <% if signed_in? %>
+          <li><%= current_user.username %> <span class="badge"><%= current_user.point %></span></li>
+        <% else %>
+          <li class="social-media"> <a data-toggle="modal" data-target="#loginModal"><i class="fa fa-user-circle-o" style="font-size:24px"></i></a></li>
+        <% end%>
+        <li class="social-media"> <i class="fa fa-search" style="font-size:24px"></i></li>
+        <li class="social-media"> <i class="fa fa-youtube" style="font-size:24px"></i></li>
+        <li class="social-media"> <i class="fa fa-twitter" style="font-size:24px"></i></li>
+        <li class="social-media"> <i class="fa fa-facebook" style="font-size:24px"></i></li>
+        <li><% if signed_in? %>
+            <%= button_to 'Sign out', sign_out_path, method: :delete, class: "btn",id: "sign-out" %>
+          <% else %>
+            <div id="flash">
+              <% flash.each do |key, value| %>
+                <div class="flash <%= key %>"><%= value %></div>
+              <% end %>
+            <% end %></li>
+        </ul>
+        <!-- </div>   -->
       </div>
     </div>
-  </nav>  <!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
-  <script src="js/classie.js"></script>
-  <script>
-    var menuOpened
-      menuButtons = document.getElementsByClassName("cbp-spmenu-button")
-      showLeftPush = document.getElementById( 'showLeftPush' ),
-      showRightPush = document.getElementById( 'showRightPush' ),
-      body = document.body;
-      for (var i = 0; i < menuButtons.length; i++) {
-        menuButtons[i].onclick = function() {
-          var menuTargetId = this.dataset.target
-          if(menuOpened) {
-            // its opened, clicked on the same button
-            if(menuOpened.id === menuTargetId) {
-              classie.toggle(menuOpened, 'cbp-spmenu-open')
-              menuOpened = null
-            } else {
-              // its opened, clicked on a different button
-              classie.toggle(menuOpened, 'cbp-spmenu-open')
-              menuOpened = document.getElementById(menuTargetId)
-              classie.toggle(menuOpened, 'cbp-spmenu-open')
-            }
+  </div>
+</nav>  <!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
+<script>
+  var menuOpened
+    menuButtons = document.getElementsByClassName("cbp-spmenu-button")
+    showLeftPush = document.getElementById( 'showLeftPush' ),
+    showRightPush = document.getElementById( 'showRightPush' ),
+    body = document.body;
+    for (var i = 0; i < menuButtons.length; i++) {
+      menuButtons[i].onclick = function() {
+        var menuTargetId = this.dataset.target
+        if(menuOpened) {
+          // its opened, clicked on the same button
+          if(menuOpened.id === menuTargetId) {
+            classie.toggle(menuOpened, 'cbp-spmenu-open')
+            menuOpened = null
           } else {
-            // closed
+            // its opened, clicked on a different button
+            classie.toggle(menuOpened, 'cbp-spmenu-open')
             menuOpened = document.getElementById(menuTargetId)
             classie.toggle(menuOpened, 'cbp-spmenu-open')
           }
-        };
-      }
-    // showLeft.onclick = function() {
-    //   var menuTargetId = this.dataset.target
-    //   if(menuOpened) {
-    //     debugger
-    //     if(menuOpened.id === menuTargetId) {
-    //       classie.toggle(menuOpened, 'cbp-spmenu-open')
-    //       menuOpened = null
-    //     } else {
-    //       classie.toggle(menuOpened, 'cbp-spmenu-open')
-    //       menuOpened = document.getElementById(menuTargetId)
-    //       classie.toggle(menuOpened, 'cbp-spmenu-open')
-    //     }
-    //   } else {
-    //     menuOpened = document.getElementById(menuTargetId)
-    //     classie.toggle(menuOpened, 'cbp-spmenu-open')
-    //   }
-    // };
-    // showRight.onclick = function() {
-    //   var menuTargetId = this.dataset.target
-    //   if(menuOpened) {
-    //     debugger
-    //     if(menuOpened.id === menuTargetId) {
-    //       classie.toggle(menuOpened, 'cbp-spmenu-open')
-    //       menuOpened = null
-    //     } else {
-    //       classie.toggle(menuOpened, 'cbp-spmenu-open')
-    //       menuOpened = document.getElementById(menuTargetId)
-    //       classie.toggle(menuOpened, 'cbp-spmenu-open')
-    //     }
-    //   } else {
-    //     menuOpened = document.getElementById(menuTargetId)
-    //     classie.toggle(menuOpened, 'cbp-spmenu-open')
-    //   }
-    // };
-    showTop.onclick = function() {
-      classie.toggle( this, 'active' );
-      classie.toggle( menuLeft, 'cbp-spmenu-open' );
-      disableOther( 'showTop' );
-    };
-    showBottom.onclick = function() {
-      classie.toggle( this, 'active' );
-      classie.toggle( menuLeft, 'cbp-spmenu-open' );
-      disableOther( 'showBottom' );
-    };
-     function disableOther( button ) {
-      if( button !== 'showLeft' ) {
-        classie.toggle( showLeft, 'disabled' );
-      }
-      if( button !== 'showRight' ) {
-        classie.toggle( showRight, 'disabled' );
-      }
-      if( button !== 'showTop' ) {
-        classie.toggle( showTop, 'disabled' );
-      }
-      if( button !== 'showBottom' ) {
-        classie.toggle( showBottom, 'disabled' );
-      }
-    
+        } else {
+          // closed
+          menuOpened = document.getElementById(menuTargetId)
+          classie.toggle(menuOpened, 'cbp-spmenu-open')
+        }
+      };
     }
-  </script>
-  <%= yield %>
-  <%= render partial: '/welcome/modal' %>
+  // showLeft.onclick = function() {
+  //   var menuTargetId = this.dataset.target
+  //   if(menuOpened) {
+  //     debugger
+  //     if(menuOpened.id === menuTargetId) {
+  //       classie.toggle(menuOpened, 'cbp-spmenu-open')
+  //       menuOpened = null
+  //     } else {
+  //       classie.toggle(menuOpened, 'cbp-spmenu-open')
+  //       menuOpened = document.getElementById(menuTargetId)
+  //       classie.toggle(menuOpened, 'cbp-spmenu-open')
+  //     }
+  //   } else {
+  //     menuOpened = document.getElementById(menuTargetId)
+  //     classie.toggle(menuOpened, 'cbp-spmenu-open')
+  //   }
+  // };
+  // showRight.onclick = function() {
+  //   var menuTargetId = this.dataset.target
+  //   if(menuOpened) {
+  //     debugger
+  //     if(menuOpened.id === menuTargetId) {
+  //       classie.toggle(menuOpened, 'cbp-spmenu-open')
+  //       menuOpened = null
+  //     } else {
+  //       classie.toggle(menuOpened, 'cbp-spmenu-open')
+  //       menuOpened = document.getElementById(menuTargetId)
+  //       classie.toggle(menuOpened, 'cbp-spmenu-open')
+  //     }
+  //   } else {
+  //     menuOpened = document.getElementById(menuTargetId)
+  //     classie.toggle(menuOpened, 'cbp-spmenu-open')
+  //   }
+  // };
+  showTop.onclick = function() {
+    classie.toggle( this, 'active' );
+    classie.toggle( menuLeft, 'cbp-spmenu-open' );
+    disableOther( 'showTop' );
+  };
+  showBottom.onclick = function() {
+    classie.toggle( this, 'active' );
+    classie.toggle( menuLeft, 'cbp-spmenu-open' );
+    disableOther( 'showBottom' );
+  };
+   function disableOther( button ) {
+    if( button !== 'showLeft' ) {
+      classie.toggle( showLeft, 'disabled' );
+    }
+    if( button !== 'showRight' ) {
+      classie.toggle( showRight, 'disabled' );
+    }
+    if( button !== 'showTop' ) {
+      classie.toggle( showTop, 'disabled' );
+    }
+    if( button !== 'showBottom' ) {
+      classie.toggle( showBottom, 'disabled' );
+    }
+  
+  }
+</script>
+<%= yield %>
+<%= render partial: '/welcome/modal' %>
 </body>
 </html>
