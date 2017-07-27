@@ -1,3 +1,4 @@
+<% @x = ["https://images.unsplash.com/photo-1454678904372-2ca94103eca4?crop=entropy&fit=crop&fm=jpg&h=975&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1925","https://images.unsplash.com/photo-1451188502541-13943edb6acb?crop=entropy&fit=crop&fm=jpg&h=975&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1925","https://images.unsplash.com/photo-1447877085163-3cce903855cd?crop=entropy&fit=crop&fm=jpg&h=975&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1925"] %>
 <div class="container">
   <div class="row">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -6,132 +7,41 @@
         <br>
         <br>
         <div class="col-lg-12">
-          <div>
-            <div class="col-md-4">
-              <div class="profile-card text-center">
-                <img class="img-responsive" src="https://images.unsplash.com/photo-1454678904372-2ca94103eca4?crop=entropy&fit=crop&fm=jpg&h=975&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1925">
-                <div class="profile-info">
-                  <h2 class="hvr-underline-from-center"><a href="/redirect/<%= @contents.first.id%>" target='_blank' style="color: white;"><%= @contents.first.subject %></a></h2>
-                  <!-- <div>Description</div> -->
-                  <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
-                  <a href="#"><i class="fa fa-envelope-o fa-2x"></i></a>
-                  <a href="#"><i class="fa fa-linkedin fa-2x"></i></a>
+          <% @contents[0..2].each do |l| %>
+            <div>
+              <div class="col-md-4">
+                <div class="profile-card text-center">
+                  <img class="img-responsive" src=<%=@x.sample%>>
+                  <div class="profile-info">
+                    <h2 class="hvr-underline-from-center"><a href="/redirect/<%= @contents.first.id%>" target='_blank' style="color: white;"><%= l.subject %></a></h2>
+                    <!-- <div>Description</div> -->
+                    <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
+                    <a href="#"><i class="fa fa-envelope-o fa-2x"></i></a>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="profile-card text-center">
-                <img class="img-responsive" src="https://images.unsplash.com/photo-1451188502541-13943edb6acb?crop=entropy&fit=crop&fm=jpg&h=975&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1925">
-                <div class="profile-info">
-                  <h2 class="hvr-underline-from-center"><a href="/redirect/<%= @contents[1].id%>" target='_blank' style="color: white;"><%= @contents[1].subject %></a></h2>
-                  <!-- <div>Brief Description...</div> -->
-                  <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
-                  <a href="#"><i class="fa fa-envelope-o fa-2x"></i></a>
-                  <a href="#"><i class="fa fa-linkedin fa-2x"></i></a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="profile-card text-center">
-                <img class="img-responsive" src="https://images.unsplash.com/photo-1447877085163-3cce903855cd?crop=entropy&fit=crop&fm=jpg&h=975&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1925">
-                <div class="profile-info">
-                  <h2 class="hvr-underline-from-center"><a href="/redirect/<%= @contents[2].id%>" target='_blank' style="color: white;"><%= @contents[2].subject %></a></h2>
-                  <!-- <div>Brief Description...</div> -->
-                  <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
-                  <a href="#"><i class="fa fa-envelope-o fa-2x"></i></a>
-                  <a href="#"><i class="fa fa-linkedin fa-2x"></i></a>
-                </div>
-              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%if @contents[2..9] != nil%>
+  <div class="container">
+    <div class="row">
+      <% @contents[2..9].each do |l| %>
+        <div class="col-xs-18 col-sm-6 col-md-3">
+          <div class="thumbnail">
+            <img src="http://placehold.it/500x250/EEE">
+            <div class="caption">
+              <h4>Thumbnail label</h4>
+              <p><a href="/redirect/<%= l.id%>" target='_blank'><%= l.subject %></a></p>
+              <%= social_share_button_tag(@contents) %>
             </div>
           </div>
         </div>
-      </div>
+      <%end%>
     </div>
   </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-18 col-sm-6 col-md-3">
-      <div class="thumbnail">
-        <img src="http://placehold.it/500x250/EEE">
-        <div class="caption">
-          <h4>Thumbnail label</h4>
-          <p><a href="/redirect/<%= @contents[3].id%>" target='_blank'><%= @contents[3].subject %></a></p>
-          <%= social_share_button_tag(@contents) %>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-18 col-sm-6 col-md-3">
-      <div class="thumbnail">
-        <img src="http://placehold.it/500x250/EEE">
-        <div class="caption">
-          <h4>Thumbnail label</h4>
-          <p><a href="/redirect/<%= @contents[4].id%>" target='_blank'><%= @contents[4].subject %></a></p>
-          <%= social_share_button_tag(@contents) %>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-18 col-sm-6 col-md-3">
-      <div class="thumbnail">
-        <img src="http://placehold.it/500x250/EEE">
-        <div class="caption">
-          <h4>Thumbnail label</h4>
-          <p><a href="/redirect/<%= @contents[5].id%>" target='_blank'><%= @contents[5].subject %></a></p>
-          <%= social_share_button_tag(@contents) %>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-18 col-sm-6 col-md-3">
-      <div class="thumbnail">
-        <img src="http://placehold.it/500x250/EEE">
-        <div class="caption">
-          <h4>Thumbnail label</h4>
-          <p><a href="/redirect/<%= @contents[5].id%>" target='_blank'><%= @contents[5].subject %></a></p>
-          <%= social_share_button_tag(@contents) %>
-        </div>
-      </div>
-    </div>
-    <hr style="clear: both">
-    <div class="col-xs-18 col-sm-6 col-md-3">
-      <div class="thumbnail">
-        <img src="http://placehold.it/500x250/EEE">
-        <div class="caption">
-          <h4>Thumbnail label</h4>
-          <p><a href="/redirect/<%= @contents[5].id%>" target='_blank'><%= @contents[5].subject %></a></p>
-          <%= social_share_button_tag(@contents) %>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-18 col-sm-6 col-md-3">
-      <div class="thumbnail">
-        <img src="http://placehold.it/500x250/EEE">
-        <div class="caption">
-          <h4>Thumbnail label</h4>
-          <p><a href="/redirect/<%= @contents[5].id%>" target='_blank'><%= @contents[5].subject %></a></p>
-          <%= social_share_button_tag(@contents) %>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-18 col-sm-6 col-md-3">
-      <div class="thumbnail">
-        <img src="http://placehold.it/500x250/EEE">
-        <div class="caption">
-          <h4>Thumbnail label</h4>
-          <p><a href="/redirect/<%= @contents[5].id%>" target='_blank'><%= @contents[5].subject %></a></p>
-          <%= social_share_button_tag(@contents) %>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-18 col-sm-6 col-md-3">
-      <div class="thumbnail">
-        <img src="http://placehold.it/500x250/EEE">
-        <div class="caption">
-          <h4>Thumbnail label</h4>
-          <p><a href="/redirect/<%= @contents[5].id%>" target='_blank'><%= @contents[5].subject %></a></p>
-          <%= social_share_button_tag(@contents) %>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--/row-->
-</div>
+<%end%>

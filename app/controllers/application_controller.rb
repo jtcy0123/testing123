@@ -14,4 +14,12 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  def search
+
+    # @x = 1
+    redirect_to :controller => params[:x], :action => params[:y], :id => params[:z],:q => params[:q]
+
+    # redirect_back fallback_location: root_path(:id => 1, :contact_id => 3, :name => 'suleman')
+  end
 end

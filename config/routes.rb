@@ -26,4 +26,6 @@ Rails.application.routes.draw do
 
   post "/contents/:id/click" => "contents#click", as: "click"
 
+  post '/search' => 'application#search', as: 'search'
+
 end

@@ -73,12 +73,29 @@
         <% else %>
           <li class="social-media"> <a data-toggle="modal" data-target="#loginModal"><i class="fa fa-user-circle-o" style="font-size:24px"></i></a></li>
         <% end%>
-        <li class="social-media"> <i class="fa fa-search" style="font-size:24px"></i></li>
+        <!-- <li class="social-media"> <i class="fa fa-search" style="font-size:24px"></i></li> -->
         <li class="social-media"> <i class="fa fa-youtube" style="font-size:24px"></i></li>
         <li class="social-media"> <i class="fa fa-twitter" style="font-size:24px"></i></li>
         <li class="social-media"> <i class="fa fa-facebook" style="font-size:24px"></i></li>
+        <!--  -->
+        <div class='dropdown' >
+          <li class="social-media"> <i class="fa fa-search" style="font-size:24px"></i></li>
+          <div class="dropdown-content">
+            <%= form_tag search_path, :method => :post do %>
+              <%= label_tag(:q, "Search for:") %>
+              <%= text_field_tag(:q) %>
+              <%a = params[:controller]%>
+              <%b = params[:action]%>
+              <%c = params[:id]%>
+              <%= hidden_field_tag :x, a %>
+              <%= hidden_field_tag :y, b %>
+              <%= hidden_field_tag :z, c %>
+            <% end %>
+          </div>
+        </div>
+        <!--  -->
         <li><% if signed_in? %>
-            <%= button_to 'Sign out', sign_out_path, method: :delete, class: "btn",id: "sign-out" %>
+            <%= button_to 'Sign out', sign_out_path, method: :delete, class: "btn",id: "sign-out", style: "float: right;" %>
           <% else %>
             <div id="flash">
               <% flash.each do |key, value| %>

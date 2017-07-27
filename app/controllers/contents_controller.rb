@@ -36,9 +36,9 @@ class ContentsController < ApplicationController
     @stories = Story.where(mood_id: @mood.id)
 
     if params[:categoryx]==nil
-      @contents = Content.where(mood_id: @mood.id).order("count DESC")
+      @contents = Content.where(mood_id: @mood.id).where("subject LIKE (?)", "%#{params[:q]}%").order("count DESC")
     else
-      @contents = Content.where(mood_id: @mood.id, category: params[:categoryx]).order("count DESC")
+      @contents = Content.where(mood_id: @mood.id, category: params[:categoryx]).where("subject LIKE (?)", "%#{params[:q]}%").order("count DESC")
     end
 
     render template: "contents/show"
