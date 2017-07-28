@@ -42,7 +42,7 @@
 }
 
 .chatbox {
-  height: 550px;
+  height: 650px;
   background: #ddd;
   padding: 10px 25px;
 }
@@ -50,9 +50,10 @@
 .chatlogs {
   padding: 10px;
   width: 100%;
-  height: 400px;
+  height: 480px;
   border-style: inset;
   background: #eee;
+  margin-bottom: 15px;
   /*to manage overflow messages scrollable*/
   overflow-x: hidden;
   overflow-y: scroll;
@@ -69,7 +70,7 @@
 
 /**/
 #leftDiv {
-  height: 550px;
+  height: 650px;
   overflow-x: hidden;
   overflow-y: scroll;
 }
