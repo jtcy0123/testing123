@@ -49,6 +49,7 @@
       </a>
     </div>
     <div id="nav">
+    <table style="margin-left: 200px;"><tr><td>
       <ul>
         <li class="nav_button">
           <button class="cbp-spmenu-button" data-target="cbp-spmenu-happy">Amazing!</button>
@@ -65,8 +66,9 @@
         <li class="nav_button">
           <button class="cbp-spmenu-button" data-target="cbp-spmenu-fear">Random?</button>
         </li>
-      </ul>
+      </ul></td>
       <!-- <div class="pull-right"> -->
+      <td>
       <ul class="right-wrapper">
         <% if signed_in? %>
           <li><%= current_user.username %> <span class="badge"><%= current_user.point %></span></li>
@@ -92,19 +94,20 @@
               <%= hidden_field_tag :z, c %>
             <% end %>
           </div>
-        </div>
+        </div></td><td>&emsp;&emsp;&emsp;</td><td>
         <!--  -->
-        <li style="float: right;"><% if signed_in? %>
+        <span style="float: right;"><% if signed_in? %>
             <%= button_to 'Sign out', sign_out_path, method: :delete, class: "btn",id: "sign-out" %>
           <% else %>
             <div id="flash">
               <% flash.each do |key, value| %>
                 <div class="flash <%= key %>"><%= value %></div>
               <% end %>
-            <% end %></li>
+            <% end %></span>
         </ul>
         <!-- </div>   -->
       </div>
+      </td></tr></table>
     </div>
   </div>
 </nav>  <!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
