@@ -36,7 +36,7 @@
               </a>
             <% end %>
             <!--  -->
-            <div class="col-md-3 well abc">
+            <div class="col-md-3 well sharestory">
               <a href="/stories/new">SHARE YOUR STORY</a>
               <% @stories.each do |s| %>
                 <div class="well row">
@@ -99,18 +99,18 @@
             </div> -->
             <!-- chat div -->
             <div class="chatbox row">
-              <h1>Chat</h1>
-              <div class="chatlogs">
+              <div class="row well livechat">Live Chat</div>
+              <div class="chatlogs row">
                 <div id="chat_<%= @mood.id %>">
                   <%= render @messages.where(mood_id: @mood.id) %>
                 </div>
               </div>
               <% if signed_in? %>
                 <%= form_for Message.new, :remote => true do |f| %>
-                  <%= f.text_field :content %>
+                  <%= f.text_field :content, id: "chat_input" %>
                   <%= f.hidden_field :user_id, value: current_user.id %>
                   <%= f.hidden_field :mood_id, value: @mood.id %>
-                  <%= f.submit "Send" %>
+                  <%= f.submit "Send", class: "btn btn-primary", style: "float: right;" %>
                 <% end %>
               <% end %>
             </div>

@@ -41,22 +41,43 @@
   color: #777;
 }
 
+.livechat {
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  margin-left: -5px;
+  margin-right: -5px;
+}
+
 .chatbox {
-  height: 650px;
-  background: #ddd;
+  height: 600px;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 3%;
   padding: 10px 25px;
 }
 
 .chatlogs {
-  padding: 10px;
+  /*padding: 10px;*/
   width: 100%;
-  height: 480px;
-  border-style: inset;
-  background: #eee;
-  margin-bottom: 15px;
+  height: 380px;
+  /*border-style: inset;*/
+  /*background: #eee;*/
+  margin-left: -5px;
+  margin-right: -5px;
+  margin-bottom: 25px;
+  /*border-radius: 10px;*/
   /*to manage overflow messages scrollable*/
   overflow-x: hidden;
   overflow-y: scroll;
+}
+
+.each_msg {
+  float: left;
+  padding: 3px 5px;
+  color: #555;
+  margin-bottom: 8px;
+  background-color: #ddd;
+  border-radius: 6px;
 }
 
 /*designing the scroll bar*/
@@ -66,6 +87,19 @@
 .chatlogs::-webkit-scrollbar-thumb, #leftDiv::-webkit-scrollbar-thumb {
   border-radius: 5px;
   background: rgba(0,0,0,.1);
+}
+
+#chat_input {
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.sharestory {
+  border-radius: 5px;
+  background-color: #2E86C1;
+  color: white;
 }
 
 /**/
