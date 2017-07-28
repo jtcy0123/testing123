@@ -30,10 +30,9 @@
             <input type="text" name="story[title]" placeholder="  Subject" style="width: 100%">
             <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
             <input type="hidden" name="story[user_id]" value="<%= current_user.id %>">
-            <input type="checkbox" name="story[mood_id]" value="1"> Happy
-            <input type="checkbox" name="story[mood_id]" value="2"> Sad
-            <input type="checkbox" name="story[mood_id]" value="3"> Anger
-            <input type="checkbox" name="story[mood_id]" value="4"> Fear
+            <input type="checkbox" name="story[mood_id]" value="1"><i style="color: white;">Happy&emsp;</i>          <input type="checkbox" name="story[mood_id]" value="2"><i style="color: white;">Sad&emsp;</i>
+            <input type="checkbox" name="story[mood_id]" value="3"><i style="color: white;">Anger&emsp;</i>
+            <input type="checkbox" name="story[mood_id]" value="4"><i style="color: white;">Fear</i>
             <textarea class="form-control" rows="18" name="story[contents]"></textarea>
           </div>
           <button type="submit" class="btn btn-primary"><i class="fa fa-reply"></i> Save</button>
@@ -51,9 +50,10 @@
     text-align: center;
     color: white;
   }
-  input {
-    height: 40px;
-    font-size: 30px;
-    background-color: #ccc;
+    input {
+    padding-left:
+  }
+  i {
+    padding: 0 10px;
   }
 </style>

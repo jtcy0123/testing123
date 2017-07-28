@@ -1,5 +1,5 @@
-// $(document).on('turbolinks:load', function() {
-  $(document).ready(function() {
+$(document).on('turbolinks:load', function() {
+  // $(document).ready(function() {
   var array = $('#contentLength').text()
   if(array !== "") {
     var totalContents = JSON.parse(array);
