@@ -27,12 +27,13 @@
         <!--  -->
         <form action="/stories" method="post">
           <div class="form-group">
-            <input type="text" name="story[title]" placeholder="  Subject" style="width: 100%"><hr>
+            <input type="text" name="story[title]" placeholder="  Subject" style="width: 100%">
             <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-            <input type="checkbox" name="story[mood_id]" value="1">Happy
-            <input type="checkbox" name="story[mood_id]" value="2">Sad
-            <input type="checkbox" name="story[mood_id]" value="3">Anger
-            <input type="checkbox" name="story[mood_id]" value="4">Fear
+            <input type="hidden" name="story[user_id]" value="<%= current_user.id %>">
+            <input type="checkbox" name="story[mood_id]" value="1"> Happy
+            <input type="checkbox" name="story[mood_id]" value="2"> Sad
+            <input type="checkbox" name="story[mood_id]" value="3"> Anger
+            <input type="checkbox" name="story[mood_id]" value="4"> Fear
             <textarea class="form-control" rows="18" name="story[contents]"></textarea>
           </div>
           <button type="submit" class="btn btn-primary"><i class="fa fa-reply"></i> Save</button>

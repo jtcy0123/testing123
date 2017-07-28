@@ -299,7 +299,7 @@ ul > .social-media {
 }
 
 .dropdown {
-    position: relative;
+    /*position: relative;*/
     display: inline-block;
 }
 
@@ -315,4 +315,8 @@ ul > .social-media {
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+.right-wrapper {
+
 }

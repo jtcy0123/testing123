@@ -36,12 +36,18 @@
               </a>
             <% end %>
             <!--  -->
-            <div class="col-md-3 well sharestory">
-              <a href="/stories/new">SHARE YOUR STORY</a>
+            <div class="col-md-3">
+              <a href="/stories/new"><div class="sharestory row">SHARE YOUR STORY</div></a>
+              <% if @stories == [] %>
+              <p style="margin-top: 5px; color: grey;">no stories yet</p>
+              <% else %>
+              <div class="row well abc allstories">
               <% @stories.each do |s| %>
                 <div class="well row">
                   <%= link_to s.title, story_path(s) %>
                 </div>
+              <% end %>
+              </div>
               <% end %>
             </div>
             <!--  -->
