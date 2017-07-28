@@ -1,1 +1,0 @@
-clicks_controller.rb
