@@ -31,9 +31,9 @@
   <div class="container">
     <div class="row">
       <% @contents[2..9].each_with_index do |l, index| %>
-      <% if index % 4 == 0 %>
-      <hr style="clear: both;">
-      <% end %>
+        <% if index % 4 == 0 %>
+          <hr style="clear: both;">
+        <% end %>
         <div class="col-xs-18 col-sm-6 col-md-3">
           <div class="thumbnail">
             <img src="http://placehold.it/500x250/EEE">
@@ -48,3 +48,4 @@
     </div>
   </div>
 <%end%>
+<a href="/stories/new">SHARE YOUR STORY</a>

@@ -2,7 +2,6 @@ class StoriesController < ApplicationController
   protect_from_forgery
 
   def new
-    byebug
     if signed_in?
       @story = Story.new
     else
