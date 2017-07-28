@@ -27,10 +27,10 @@
         <!--  -->
         <form action="/stories" method="post">
           <div class="form-group">
-            <input type="text" name="story[title]" placeholder="  Subject" style="width: 100%; margin-bottom: 20px;">
+            <input type="text" name="story[title]" placeholder=" Subject" style="width: 100%; margin-bottom: 20px; padding: 5px 15px; font-size: 20px;">
             <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
             <input type="hidden" name="story[user_id]" value="<%= current_user.id %>">
-            <input type="checkbox" name="story[mood_id]" value="1"><i style="color: white; padding: 0 10px;">Happy&emsp;</i>          
+            <input type="checkbox" name="story[mood_id]" value="1"><i style="color: white; padding: 0 10px;">Happy&emsp;</i>
             <input type="checkbox" name="story[mood_id]" value="2"><i style="color: white; padding: 0 10px;">Sad&emsp;</i>
             <input type="checkbox" name="story[mood_id]" value="3"><i style="color: white; padding: 0 10px;">Anger&emsp;</i>
             <input type="checkbox" name="story[mood_id]" value="4"><i style="color: white; padding: 0 10px;">Fear</i>
@@ -43,10 +43,8 @@
   </div>
 </div>
 <style type="text/css">
-
   h3 {
     text-align: center;
     color: white;
   }
-  
 </style>
