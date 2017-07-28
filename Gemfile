@@ -11,6 +11,8 @@ gem 'faye'
 gem 'social-share-button'
 gem 'rails_12factor'
 gem 'unicorn'
+gem 'private_pub'
+gem 'thin'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.2'
