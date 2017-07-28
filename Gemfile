@@ -10,6 +10,7 @@ gem 'nokogiri'
 gem 'faye'
 gem 'social-share-button'
 gem 'rails_12factor'
+gem 'unicorn'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.2'
