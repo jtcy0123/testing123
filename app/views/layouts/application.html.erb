@@ -150,31 +150,31 @@
     }
   
   
-  showTop.onclick = function() {
-    classie.toggle( this, 'active' );
-    classie.toggle( menuLeft, 'cbp-spmenu-open' );
-    disableOther( 'showTop' );
-  };
-  showBottom.onclick = function() {
-    classie.toggle( this, 'active' );
-    classie.toggle( menuLeft, 'cbp-spmenu-open' );
-    disableOther( 'showBottom' );
-  };
-   function disableOther( button ) {
-    if( button !== 'showLeft' ) {
-      classie.toggle( showLeft, 'disabled' );
-    }
-    if( button !== 'showRight' ) {
-      classie.toggle( showRight, 'disabled' );
-    }
-    if( button !== 'showTop' ) {
-      classie.toggle( showTop, 'disabled' );
-    }
-    if( button !== 'showBottom' ) {
-      classie.toggle( showBottom, 'disabled' );
-    }
+  // showTop.onclick = function() {
+  //   classie.toggle( this, 'active' );
+  //   classie.toggle( menuLeft, 'cbp-spmenu-open' );
+  //   disableOther( 'showTop' );
+  // };
+  // showBottom.onclick = function() {
+  //   classie.toggle( this, 'active' );
+  //   classie.toggle( menuLeft, 'cbp-spmenu-open' );
+  //   disableOther( 'showBottom' );
+  // };
+  //  function disableOther( button ) {
+  //   if( button !== 'showLeft' ) {
+  //     classie.toggle( showLeft, 'disabled' );
+  //   }
+  //   if( button !== 'showRight' ) {
+  //     classie.toggle( showRight, 'disabled' );
+  //   }
+  //   if( button !== 'showTop' ) {
+  //     classie.toggle( showTop, 'disabled' );
+  //   }
+  //   if( button !== 'showBottom' ) {
+  //     classie.toggle( showBottom, 'disabled' );
+  //   }
   
-  }
+  // }
 </script>
 <%= yield %>
 <%= render partial: '/welcome/modal' %>
