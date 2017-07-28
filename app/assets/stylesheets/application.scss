@@ -138,25 +138,25 @@ a {
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #cbp-spmenu-happy {
-  background-color: pink;
+  background-color: #FFFECE;
   opacity: 0.7;
   width: 180px;
 }
 
 #cbp-spmenu-sad {
-  background-color: blue;
+  background-color: #D3F0FF;
   opacity: 0.7;
   width: 180px;
 }
 
 #cbp-spmenu-anger {
-  background-color: red;
+  background-color: #FCC5B6;
   opacity: 0.7;
   width: 180px;
 }
 
 #cbp-spmenu-fear {
-  background-color: grey;
+  background-color: #F0F0F0;
   opacity: 0.7;
   width: 180px;
 }
@@ -178,7 +178,7 @@ a {
 
 .cbp-spmenu a {
   display: block;
-  color: #fff;
+  color: #000;
   font-size: 1.1em;
   font-weight: 300;
 }
@@ -196,6 +196,10 @@ a {
   height: 100%;
   top: 0;
   z-index: 1000;
+}
+
+.sideside {
+  color: black;
 }
 
 .cbp-spmenu-vertical a {

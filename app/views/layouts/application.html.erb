@@ -32,7 +32,7 @@
       <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-<%= emotion %>">
         <div class="menu-header">
           <div align="center">
-            <i class="fa fa-angle-double-left my-icon" style="font-size:24px"></i>Articles
+            <p style="margin-bottom: 100px;"></p>
             <%= link_to "All", content_path(:categoryx => nil, :id => Mood.find_by(emotion: emotion).id) %>
             <%= link_to "News", content_path(:categoryx => "news", :id => Mood.find_by(emotion: emotion).id) %>
             <%= link_to "Movies", content_path(:categoryx => "movie", :id => Mood.find_by(emotion: emotion).id) %>
@@ -49,65 +49,73 @@
       </a>
     </div>
     <div id="nav">
-    <table style="margin-left: 200px;"><tr><td>
-      <ul>
-        <li class="nav_button">
-          <button class="cbp-spmenu-button" data-target="cbp-spmenu-happy">Amazing!</button>
-        </li>
-        <li class="nav_button">
-          <button  class="cbp-spmenu-button" data-target="cbp-spmenu-sad">Saddening!</button>
-        </li>
-        <li class="nav_button">
-          <button class="cbp-spmenu-button" data-target="cbp-spmenu-anger">Shocking!</button>
-        </li>
-        <li class="nav_button">
-          <button class="cbp-spmenu-button" data-target="cbp-spmenu-fear">Thrilling!</button>
-        </li>
-        <li class="nav_button">
-          <button class="cbp-spmenu-button" data-target="cbp-spmenu-fear">Random?</button>
-        </li>
-      </ul></td>
-      <!-- <div class="pull-right"> -->
-      <td>
-      <ul class="right-wrapper">
-        <% if signed_in? %>
-          <li><%= current_user.username %> <span class="badge"><%= current_user.point %></span></li>
-        <% else %>
-          <li class="social-media"> <a data-toggle="modal" data-target="#loginModal"><i class="fa fa-user-circle-o" style="font-size:24px"></i></a></li>
-        <% end%>
-        <!-- <li class="social-media"> <i class="fa fa-search" style="font-size:24px"></i></li> -->
-        <li class="social-media"> <i class="fa fa-youtube" style="font-size:24px"></i></li>
-        <li class="social-media"> <i class="fa fa-twitter" style="font-size:24px"></i></li>
-        <li class="social-media"> <i class="fa fa-facebook" style="font-size:24px"></i></li>
-        <!--  -->
-        <div class='dropdown' >
-          <li class="social-media"><i class="fa fa-search" style="font-size:24px"></i></li>
-          <div class="dropdown-content">
-            <%= form_tag search_path, :method => :post do %>
-              <%= label_tag(:q, "Search for:") %>
-              <%= text_field_tag(:q) %>
-              <%a = params[:controller]%>
-              <%b = params[:action]%>
-              <%c = params[:id]%>
-              <%= hidden_field_tag :x, a %>
-              <%= hidden_field_tag :y, b %>
-              <%= hidden_field_tag :z, c %>
-            <% end %>
-          </div>
-        </div></td><td>&emsp;&emsp;&emsp;</td><td>
-        <!--  -->
-        <span style="float: right;"><% if signed_in? %>
-            <%= button_to 'Sign out', sign_out_path, method: :delete, class: "btn",id: "sign-out" %>
-          <% else %>
-            <div id="flash">
-              <% flash.each do |key, value| %>
-                <div class="flash <%= key %>"><%= value %></div>
-              <% end %>
-            <% end %></span>
-        </ul>
-        <!-- </div>   -->
-      </div>
-      </td></tr></table>
+      <table style="margin-left: 200px;">
+        <tr>
+          <td>
+            <ul>
+              <li class="nav_button">
+                <button class="cbp-spmenu-button" data-target="cbp-spmenu-happy">Amazing!</button>
+              </li>
+              <li class="nav_button">
+                <button  class="cbp-spmenu-button" data-target="cbp-spmenu-sad">Saddening!</button>
+              </li>
+              <li class="nav_button">
+                <button class="cbp-spmenu-button" data-target="cbp-spmenu-anger">Fuming!</button>
+              </li>
+              <li class="nav_button">
+                <button class="cbp-spmenu-button" data-target="cbp-spmenu-fear">Thrilling!</button>
+              </li>
+              <li class="nav_button">
+                <button class="cbp-spmenu-button" data-target="cbp-spmenu-fear">Random?</button>
+              </li>
+            </ul>
+          </td>
+          <!-- <div class="pull-right"> -->
+          <td>
+            <ul class="right-wrapper">
+              <% if signed_in? %>
+                <li><%= current_user.username %> <span class="badge"><%= current_user.point %></span></li>
+              <% else %>
+                <li class="social-media"> <a data-toggle="modal" data-target="#loginModal"><i class="fa fa-user-circle-o" style="font-size:24px"></i></a></li>
+              <% end%>
+              <!-- <li class="social-media"> <i class="fa fa-search" style="font-size:24px"></i></li> -->
+              <li class="social-media"> <i class="fa fa-youtube" style="font-size:24px"></i></li>
+              <li class="social-media"> <i class="fa fa-twitter" style="font-size:24px"></i></li>
+              <li class="social-media"> <i class="fa fa-facebook" style="font-size:24px"></i></li>
+              <!--  -->
+              <div class='dropdown' >
+                <li class="social-media"><i class="fa fa-search" style="font-size:24px"></i></li>
+                <div class="dropdown-content">
+                  <%= form_tag search_path, :method => :post do %>
+                    <%= label_tag(:q, "Search for:") %>
+                    <%= text_field_tag(:q) %>
+                    <%a = params[:controller]%>
+                    <%b = params[:action]%>
+                    <%c = params[:id]%>
+                    <%= hidden_field_tag :x, a %>
+                    <%= hidden_field_tag :y, b %>
+                    <%= hidden_field_tag :z, c %>
+                  <% end %>
+                </div>
+              </div>
+            </td>
+            <td>&emsp;&emsp;&emsp;</td>
+            <td>
+              <!--  -->
+              <span style="float: right;"><% if signed_in? %>
+                  <%= button_to 'Sign out', sign_out_path, method: :delete, class: "btn",id: "sign-out" %>
+                <% else %>
+                  <div id="flash">
+                    <% flash.each do |key, value| %>
+                      <div class="flash <%= key %>"><%= value %></div>
+                    <% end %>
+                  <% end %></span>
+              </ul>
+              <!-- </div>   -->
+            </div>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 </nav>  <!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
@@ -141,8 +149,8 @@
         // }
       };
     }
-
-
+  
+  
   showTop.onclick = function() {
     classie.toggle( this, 'active' );
     classie.toggle( menuLeft, 'cbp-spmenu-open' );

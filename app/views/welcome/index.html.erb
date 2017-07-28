@@ -15,8 +15,7 @@
                   <div class="profile-info">
                     <h2 class="hvr-underline-from-center"><a href="/redirect/<%= @contents.first.id%>" target='_blank' style="color: white;"><%= l.subject %></a></h2>
                     <!-- <div>Description</div> -->
-                    <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
-                    <a href="#"><i class="fa fa-envelope-o fa-2x"></i></a>
+                    <%= social_share_button_tag(@contents) %>
                   </div>
                 </div>
               </div>

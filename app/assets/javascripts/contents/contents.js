@@ -1,5 +1,5 @@
-$(document).on("turbolinks:load", function(){
-  
+// $(document).on("turbolinks:load", function(){
+  $(document).ready(function() {
 
   $(".clickcount").on("click", function(){
     event.preventDefault()

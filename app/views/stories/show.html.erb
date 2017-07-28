@@ -12,6 +12,7 @@
             <%= f.submit "LIKED", class: "btn btn-primary btn-xs", style: "float: right; margin-right: 5px;" %>
           <% end %>
         <% end %>
+      <% elsif signed_in? %>
       <% else %>
         <button class="btn btn-info btn-xs" style="float: right; margin-right: 5px;" data-toggle="modal" data-target="#loginModal">LIKE</button>
       <% end %>
