@@ -80,9 +80,9 @@ GEM
     email_validator (1.6.0)
       activemodel
     erubi (1.6.1)
-    eventmachine (1.0.9.1)
+    eventmachine (1.2.5)
     execjs (2.7.0)
-    faye (1.1.2)
+    faye (1.2.4)
       cookiejar (>= 0.3.0)
       em-http-request (>= 0.3.0)
       eventmachine (>= 0.12.0)
