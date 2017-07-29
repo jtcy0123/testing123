@@ -1,43 +1,40 @@
 <% @x = ["https://images.unsplash.com/photo-1454678904372-2ca94103eca4?crop=entropy&fit=crop&fm=jpg&h=975&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1925","https://images.unsplash.com/photo-1451188502541-13943edb6acb?crop=entropy&fit=crop&fm=jpg&h=975&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1925","https://images.unsplash.com/photo-1447877085163-3cce903855cd?crop=entropy&fit=crop&fm=jpg&h=975&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1925"] %>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<video poster="https://upload.wikimedia.org/wikipedia/commons/2/23/Lake_mapourika_NZ.jpeg" id="bgvid" playsinline autoplay muted loop>
+  <source src="http://thenewcode.com/assets/videos/lake.webm" type="video/webm">
+  <source src="http://thenewcode.com/assets/videos/lake.mp4" type="video/mp4">
+</video>
 <div class="container">
-  <div class="row">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <div class="container">
-      <div class="row ">
-        <br>
-        <br>
-        <div class="col-lg-12">
-          <% @contents[0..2].each do |l| %>
-            <div>
-              <div class="col-md-4">
-                <div class="profile-card text-center">
-                  <img class="img-responsive" src=<%=@x.sample%>>
-                  <div class="profile-info">
-                    <h2 class="hvr-underline-from-center"><a href="/redirect/<%= l.id%>" target='_blank' style="color: white;"><%= l.subject %></a></h2>
-                    <!-- <div>Description</div> -->
-                    <%= social_share_button_tag(@contents) %>
-                  </div>
-                </div>
+  <div class="row ">
+    <br>
+    <br>
+    <div class="col-md-12">
+      <% @contents[0..2].each_with_index do |l, index| %>
+        <div>
+          <div class="col-md-4">
+            <div class="profile-card text-center">
+              <img class="img-responsive" src=<%=@x[index]%>>
+              <div class="profile-info">
+                <h2 class="hvr-underline-from-center"><a href="/redirect/<%= l.id%>" target='_blank' style="color: white;"><%= l.subject %></a></h2>
+                <!-- <div>Description</div> -->
+                <%= social_share_button_tag(@contents) %>
               </div>
             </div>
-          <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
-</div>
-<%if @contents[2..9] != nil%>
-  <div class="container">
+  <%if @contents[3..10] != nil%>
     <div class="row">
-      <% @contents[2..9].each_with_index do |l, index| %>
+      <% @contents[3..10].each_with_index do |l, index| %>
         <% if index % 4 == 0 %>
           <hr style="clear: both;">
         <% end %>
         <div class="col-xs-18 col-sm-6 col-md-3">
           <div class="thumbnail">
-            <img src="http://placehold.it/500x250/EEE">
-            <div class="caption">
-              <!-- <h4>Thumbnail label</h4> -->
+            <img src="<%= l.photo %>" style="width: 100%; height: 180px; overflow: hidden; display: block;">
+            <div class="caption smallindex">
               <p><a href="/redirect/<%= l.id%>" target='_blank'><%= l.subject %></a></p>
               <%= social_share_button_tag(@contents) %>
             </div>
@@ -45,5 +42,5 @@
         </div>
       <%end%>
     </div>
-  </div>
-<%end%>
+  <%end%>
+</div>

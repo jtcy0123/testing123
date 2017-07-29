@@ -5,6 +5,7 @@ class CreateStories < ActiveRecord::Migration[5.1]
       t.string :contents
       t.references :user
       t.references :mood
+      t.string :status, default: "unverified"
 
       t.timestamps
     end

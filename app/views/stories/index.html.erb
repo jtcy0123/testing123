@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="col-md-2"></div>
+  <div class="col-md-8 well abc">
+    <h2 style="text-align: center;"><b><u>UNVERIFIED STORIES</u></b></h2>
+    <% @stories.each do |s| %>
+      <div class="well row">
+        <h4><b><%= link_to s.title, story_path(s) %></b></h4>
+        <p style="float: right;">by <%= User.find(s.user_id).username %></p>
+      </div>
+    <% end %>
+  </div>
+</div>

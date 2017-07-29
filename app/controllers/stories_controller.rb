@@ -1,6 +1,10 @@
 class StoriesController < ApplicationController
   protect_from_forgery
 
+  def index
+    @stories = Story.where(status: "unverified")
+  end
+
   def new
     if signed_in?
       @story = Story.new
@@ -23,6 +27,16 @@ class StoriesController < ApplicationController
       @like = Like.where(story_id: params[:id]).find_by(user_id: current_user.id)
     end
     @story = Story.find(params[:id])
+  end
+
+  def update
+    story = Story.find(params[:id])
+    story.update(status: "verified")
+    user = User.find(story.user_id)
+    x = user.point
+    x += 15
+    user.update_attribute('point',x)
+    redirect_to stories_path
   end
 
   # private

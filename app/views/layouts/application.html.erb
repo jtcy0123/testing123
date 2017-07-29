@@ -66,15 +66,18 @@
                 <button class="cbp-spmenu-button" data-target="cbp-spmenu-fear">Thrilling!</button>
               </li>
               <li class="nav_button">
-                <button class="cbp-spmenu-button" data-target="cbp-spmenu-fear">Random?</button>
+                <% random = (1..4).to_a %>
+                <a href="/contents/<%=random.sample %>"><button class="cbp-spmenu-button">Random?</button></a>
               </li>
             </ul>
           </td>
           <!-- <div class="pull-right"> -->
           <td>
             <ul class="right-wrapper">
-              <% if signed_in? %>
+              <% if signed_in? && current_user.status != 1 %>
                 <li><%= current_user.username %> <span class="badge"><%= current_user.point %></span></li>
+              <% elsif signed_in? %>
+                <li><%= current_user.username %> <span class="badge">ADMIN</span></li>
               <% else %>
                 <li class="social-media"> <a data-toggle="modal" data-target="#loginModal"><i class="fa fa-user-circle-o" style="font-size:24px"></i></a></li>
               <% end%>

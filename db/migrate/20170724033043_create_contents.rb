@@ -4,7 +4,7 @@ class CreateContents < ActiveRecord::Migration[5.1]
       t.string :subject
       t.string :description
       t.string :link
-      t.string :photos
+      t.string :photo
       t.references :mood
       t.string :category
 
