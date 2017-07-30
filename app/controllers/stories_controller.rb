@@ -2,7 +2,11 @@ class StoriesController < ApplicationController
   protect_from_forgery
 
   def index
-    @stories = Story.where(status: "unverified")
+    if current_user.status == 1
+      @stories = Story.where(status: "unverified")
+    else
+      redirect_to root_path
+    end
   end
 
   def new

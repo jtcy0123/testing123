@@ -1,0 +1,83 @@
+<div class="container" style="margin-top: 20px;">
+  <div class="col-md-2"></div>
+  <div class="col-md-8 well abc">
+    <h5 style="text-align: center;"><b>ACCOUNT</b></h5>
+    <hr>
+    <h6 style="color: #888; text-align: right;"><%= current_user.email %></h6>
+    <% cash = current_user.point * 0.05%>
+    <p><b>Total CashPoints</b>&emsp;<b style="color: red;">RM <%= cash %></b></p>
+    <p>Points</p>
+    <div class='parent'>
+      <div class='child1'>- Redeemable</div>
+      <div class='child2'> <hr class="between" /></div>
+      <div class='child3'><%= current_user.point %> pts</div>
+    </div>
+    <div class='parent'>
+      <div class='child1'>- Pending</div>
+      <div class='child2'> <hr class="between" /></div>
+      <div class='child3'><%= Story.where(user_id: current_user.id, status: "unverified").length * 15 %> pts</div>
+    </div>
+    <div class='parent'>
+      <div class='child1'>Cash per Point</div>
+      <div class='child2'> <hr class="between" /></div>
+      <div class='child3'>RM 0.05</div>
+    </div>
+    <br>
+    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#payoutModal">REQUEST PAYOUT</button>
+    <p style="font-size: 13px; color: #aaa;">You can request for payout once you've reached Redeemable CashPoint of RM 10.00</p>
+    <hr>
+    <div style="color: grey;">
+      How to collect cashpoints?
+      <ol style="text-align: left; font-size: 13px; padding-left: 20px;">
+        <li>login to receive 1 point per day</li>
+        <li>share your story to receive up to 15 points per story</li>
+        <li>receive 1 point on each like for your story</li>
+      </ol>
+    </div>
+  </div>
+</div>
+<!-- Modal for payout -->
+<div class="modal fade" id="payoutModal" role="dialog">
+  <div class="modal-dialog" style="width: 30%">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body" style="font-size: 15px; padding: 20px 35px;">
+        <p>Oops, you need minimum of RM 10.00</p>
+        <p>Redeemable CashPoints to cashout</p>
+        <button type="button" data-dismiss="modal" id="popout">Ok</button>
+        <div style="clear: both;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .between {
+    border: 1px dotted #ccc;
+    margin-left:10px;
+    margin-right:10px;
+    margin-top: 10px;
+  }
+  .parent {
+    display:-moz-box; /* Firefox */
+    display:-webkit-box; /* Safari and Chrome */
+    display:-ms-flexbox; /* Internet Explorer 10 */
+    display:box;
+    width:100%;
+    font-size: 15px;
+  }
+  .child2 {
+    -moz-box-flex:5.0; /* Firefox */
+    -webkit-box-flex:5.0; /* Safari and Chrome */
+    -ms-flex:9.0; /* Internet Explorer 10 */
+    box-flex:9.0;
+  }
+  .child3 {
+    color: red;
+  }
+  #popout {
+    background-color: white;
+    border: none;
+    color: red;
+    float: right;
+  }
+</style>

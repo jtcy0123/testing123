@@ -307,6 +307,8 @@ ul > .social-media {
 
 .dropdown-content {
     display: none;
+    margin-top: 50px;
+    margin-left: -100px;
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
@@ -319,10 +321,34 @@ ul > .social-media {
     display: block;
 }
 
-.right-wrapper {
-
+#logo {
+  margin-top: 10px; 
+  transform: rotate(-5deg);
 }
 
-/*#logo {
-  width: 20px;
-}*/
+#ttt td ul{
+  margin-left: 40px;
+}
+#ttt td li{
+  margin-right: 0px;
+}
+#ttt td:first-child li {
+  margin-left: 0px;
+}
+#ttt td:nth-child(2) ul {
+  margin-left: 0px;
+  padding-left: 0px;
+  margin-right: 20px;
+}
+#ttt td:last-child .btn {
+  margin-left: 20px;
+}
+
+.fa-user-circle-o {
+  font-size: 10px; 
+  margin-right: 5px;
+  margin-left: 30px;
+}
+.right-wrapper .social-media:first-child {
+  padding-right: 40px;
+}

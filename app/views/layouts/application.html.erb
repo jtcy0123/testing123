@@ -45,11 +45,11 @@
     <% end %>
     <div class="navbar-header">
       <a class="navbar-brand" href="/">
-        <div style="margin-top: 0;"><%= image_tag('oie_transparent.png', size: "230x100", style: "position: absolute;") %></div>
+        <div id="logo"><%= image_tag('oie_transparent.png', size: "230x100", style: "position: absolute;") %></div>
       </a>
     </div>
     <div id="nav">
-      <table style="margin-left: 200px;">
+      <table style="margin-left: 200px;" id="ttt">
         <tr>
           <td>
             <ul>
@@ -75,16 +75,16 @@
           <td>
             <ul class="right-wrapper">
               <% if signed_in? && current_user.status != 1 %>
-                <li><%= current_user.username %> <span class="badge"><%= current_user.point %></span></li>
+                <li><a href="/users/<%= current_user.id %>"><%= current_user.username %> <span class="badge"><%= current_user.point %>pts</span></a></li>
               <% elsif signed_in? %>
                 <li><%= current_user.username %> <span class="badge">ADMIN</span></li>
               <% else %>
-                <li class="social-media"> <a data-toggle="modal" data-target="#loginModal"><i class="fa fa-user-circle-o" style="font-size:24px"></i></a></li>
+                <li class="social-media"> <a data-toggle="modal" data-target="#loginModal"><i class="fa fa-user-circle-o" style="font-size: 25px;"></i>login</a></li>
               <% end%>
               <!-- <li class="social-media"> <i class="fa fa-search" style="font-size:24px"></i></li> -->
-              <li class="social-media"> <i class="fa fa-youtube" style="font-size:24px"></i></li>
-              <li class="social-media"> <i class="fa fa-twitter" style="font-size:24px"></i></li>
-              <li class="social-media"> <i class="fa fa-facebook" style="font-size:24px"></i></li>
+              <li class="social-media"> <i class="fa fa-youtube" style="font-size:15px"></i></li>
+              <li class="social-media"> <i class="fa fa-twitter" style="font-size:15px"></i></li>
+              <li class="social-media"> <i class="fa fa-facebook" style="font-size:15px"></i></li>
               <!--  -->
               <div class='dropdown' >
                 <li class="social-media"><i class="fa fa-search" style="font-size:24px"></i></li>
