@@ -94,4 +94,6 @@ $(document).ready(function() {
   faye.subscribe("/messages/new", function(data) {
     eval(data);
   })
+
+  $("#logo").effect("bounce", { times:7, distance:100 }, 3000);
 })

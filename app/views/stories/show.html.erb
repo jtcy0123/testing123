@@ -41,14 +41,26 @@
     </div>
   </div>
   <div class="col-md-2 well sideStory">
-    <b>All stories by <%= User.find(@story.user_id).username %></b>
+    <% if signed_in? && current_user.id == @story.user_id %>
+      <b>All your stories</b>
+    <% else %>
+      <b>All stories by <%= User.find(@story.user_id).username %></b>
+    <% end %>
     <% if signed_in? && current_user.status != 1 %>
       <div class="row" style="text-align: right;"><a href="/stories/new">share your story</a></div>
     <% end %>
-    <% Story.where(user_id: @story.user_id).each do |s| %>
+    <% if signed_in? && (current_user.status == 1 || current_user.id == @story.user_id) %>
+      <% stories = Story.where(user_id: @story.user_id) %>
+    <% else %>
+      <% stories = Story.where(user_id: @story.user_id).where(status: "verified") %>
+    <% end %>
+    <% stories.each do |s| %>
       <a href="/stories/<%= s.id %>">
         <div class="row well">
           <%= s.title.upcase %>
+          <% if signed_in? && (current_user.status == 1 || current_user.id == @story.user_id) %>
+            - <i style="color: red;"><%= s.status %></i>
+          <% end %>
         </div>
       </a>
     <% end %>

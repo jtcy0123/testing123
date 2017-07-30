@@ -1,5 +1,5 @@
 <div class="container" style="margin-top: 20px;">
-  <div class="col-md-2"></div>
+  <div class="col-md-1"></div>
   <div class="col-md-8 well abc">
     <h5 style="text-align: center;"><b>ACCOUNT</b></h5>
     <hr>
@@ -34,6 +34,17 @@
         <li>receive 1 point on each like for your story</li>
       </ol>
     </div>
+  </div>
+  <div class="col-md-1"></div>
+  <div class="col-md-2 well abc">
+    <u>Your Stories</u>
+    <ol style="padding-left: 15px;">
+      <% Story.where(user_id: current_user.id).each do |s| %>
+        <li style="font-size: 15px;"><%= link_to s.title, story_path(s) %> - <i style="color: red;"><%= s.status %></i>
+        </li>
+        <br>
+      <% end %>
+    </ol>
   </div>
 </div>
 <!-- Modal for payout -->
