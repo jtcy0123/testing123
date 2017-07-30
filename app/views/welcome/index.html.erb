@@ -44,7 +44,9 @@
     </div>
   <%end%>
 </div>
-<a id="subscribe" data-toggle="modal" data-target="#subscribeModal"></a>
+<% if !signed_in? %>
+  <a id="subscribe" data-toggle="modal" data-target="#subscribeModal"></a>
+<% end %>
 <!-- Modal for payout -->
 <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
 <div class="modal fade" id="subscribeModal" role="dialog">
