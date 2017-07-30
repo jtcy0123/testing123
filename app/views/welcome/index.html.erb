@@ -44,3 +44,36 @@
     </div>
   <%end%>
 </div>
+<a id="subscribe" data-toggle="modal" data-target="#subscribeModal"></a>
+<!-- Modal for payout -->
+<link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+<div class="modal fade" id="subscribeModal" role="dialog">
+  <div class="modal-dialog" style="width: 40%; margin-top: 7%;">
+    <!-- Modal content-->
+    <div class="modal-content" style="background-color: #333; height: 550px; border-radius: 50%;">
+      <div class="modal-body" style="color: #ddd; padding: 10px 50px; text-align: center;">
+        <button data-dismiss="modal" style="background-color: #333; border: none; color: #444; font-size: 40px;" id="popclose">&times;</button><br>
+        <br>
+        <h1 style="font-family: 'Abril Fatface'; font-size: 70px;">Rewarding is our thing!</h1>
+        <p>Earn while</p>
+        <p>browsing &#9679; sharing &#9679; chatting</p>
+        <br>
+        <h4>Sign Up now and get RM2 cash points for free!</h4>
+        <br>
+        <button id="popsignup" class="btn btn-default btn-lg" data-toggle="modal" data-target="#signupModal">Sign Up</button>
+        <div style="clear: both;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render partial: '/welcome/modal' %>
+<script>
+  $(document).ready(function() {
+    setTimeout( function(){
+      $('#subscribe').click()
+    }  , 5000 );
+    $('#popsignup').on('click', function() {
+      $('#popclose').click()
+    });
+  })
+</script>
