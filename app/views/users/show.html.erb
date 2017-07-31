@@ -5,7 +5,7 @@
     <hr>
     <h6 style="color: #888; text-align: right;"><%= current_user.email %></h6>
     <% cash = current_user.point * 0.05%>
-    <p><b>Total CashPoints</b>&emsp;<b style="color: red;">RM <%= cash %></b></p>
+    <p><b>Total CashPoints</b>&emsp;<b style="color: red;">RM <%= cash.round(2) %></b></p>
     <p>Points</p>
     <div class='parent'>
       <div class='child1'>- Redeemable</div>
