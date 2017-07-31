@@ -49,6 +49,7 @@
               <% @stories.where(status: "verified").each do |s| %>
                 <div class="well row">
                   <%= link_to s.title, story_path(s) %>
+                  <p style="font-size: 10px; text-align: right;">by <%= User.find(s.user_id).username %></p>
                 </div>
               <% end %>
               </div>
