@@ -6,7 +6,7 @@ class UsersController < Clearance::UsersController
 
   def create
     @user = User.new(user_params)
-    @user.point = 0
+    @user.point = 40
     if @user.save
       sign_in @user
       redirect_back fallback_location: root_path
