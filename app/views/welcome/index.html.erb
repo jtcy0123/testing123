@@ -1,4 +1,4 @@
-<% @x = ["https://images.unsplash.com/photo-1454678904372-2ca94103eca4?crop=entropy&fit=crop&fm=jpg&h=975&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1925","https://images.unsplash.com/photo-1451188502541-13943edb6acb?crop=entropy&fit=crop&fm=jpg&h=975&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1925","https://images.unsplash.com/photo-1447877085163-3cce903855cd?crop=entropy&fit=crop&fm=jpg&h=975&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1925"] %>
+<% @x = ["index1.jpg","index2.jpg","index3.jpg"] %>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <video poster="https://upload.wikimedia.org/wikipedia/commons/2/23/Lake_mapourika_NZ.jpeg" id="bgvid" playsinline autoplay muted loop>
   <source src="http://thenewcode.com/assets/videos/lake.webm" type="video/webm">
@@ -13,7 +13,7 @@
         <div>
           <div class="col-md-4">
             <div class="profile-card text-center">
-              <img class="img-responsive" src=<%=@x[index]%>>
+              <%= image_tag @x[index], class: "img-responsive" %>
               <div class="profile-info">
                 <h2 class="hvr-underline-from-center"><a href="/stories/<%= l.id%>" style="color: white;"><%= l.title %></a></h2>
                 <!-- <div>Description</div> -->
