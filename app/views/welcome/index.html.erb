@@ -9,13 +9,13 @@
     <br>
     <br>
     <div class="col-md-12">
-      <% @contents[0..2].each_with_index do |l, index| %>
+      <% Story.all[0..2].each_with_index do |l, index| %>
         <div>
           <div class="col-md-4">
             <div class="profile-card text-center">
               <img class="img-responsive" src=<%=@x[index]%>>
               <div class="profile-info">
-                <h2 class="hvr-underline-from-center"><a href="/redirect/<%= l.id%>" target='_blank' style="color: white;"><%= l.subject %></a></h2>
+                <h2 class="hvr-underline-from-center"><a href="/redirect/<%= l.id%>" target='_blank' style="color: white;"><%= l.title %></a></h2>
                 <!-- <div>Description</div> -->
                 <%= social_share_button_tag(@contents) %>
               </div>
