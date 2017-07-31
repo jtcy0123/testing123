@@ -5,7 +5,7 @@
 <% mood = "saddening" %>
     <div id="sad" class="background">
     <% elsif @mood.emotion == "anger" %>
-<% mood = "shocking" %>
+<% mood = "fuming" %>
       <div id="anger" class="background">
       <% elsif @mood.emotion == "fear" %>
 <% mood = "thrilling" %>
@@ -37,12 +37,16 @@
             <% end %>
             <!--  -->
             <div class="col-md-3">
+            <% if signed_in? %>
               <a href="/stories/new"><div class="sharestory row">SHARE YOUR STORY</div></a>
+              <% else %>
+              <a data-toggle="modal" data-target="#loginModal"><div class="sharestory row">SHARE YOUR STORY</div></a>
+              <% end %>
               <% if @stories == [] %>
               <p style="margin-top: 5px; color: grey;">no stories yet</p>
               <% else %>
               <div class="row well abc allstories">
-              <% @stories.each do |s| %>
+              <% @stories.where(status: "verified").each do |s| %>
                 <div class="well row">
                   <%= link_to s.title, story_path(s) %>
                 </div>
@@ -56,24 +60,24 @@
               <div class="col-md-9 well abc">
                 <p id="contentLength" style="display: none"><%= @contents.pluck(:id) %></p>
                 <% @contents.each do |c| %>
-                  <div class="well row">
+                  <div class="well row" style="padding: 0;">
                     <!--  -->
                     <!--  -->
                     <!--  -->
                     <!--  -->
-                    <div class='col-md-2'>
-                      <%= image_tag 'http://via.placeholder.com/50x50' %>
+                    <div class='col-md-2' style="padding: 0 0 5px 0;">
+                      <img src="<%=c.photo%>" style="width: 100%; height: 100%;">
                     </div>
-                    <div class='col-md-10'>
+                    <div class='col-md-10' style="padding-top: 15px;">
                       <b><%= link_to c.subject, redirect_path(c.id), target: :_blank %></b><br>
-                      <a class="commentBtn" id="commentBtn<%= c.id %>"><i class="fa fa-comment" aria-hidden="true">&nbsp;<b>Comments</b></i></a>
+                      <a class="commentBtn" id="commentBtn<%= c.id %>"><i class="fa fa-comment" aria-hidden="true">&nbsp;<b>Comments</b></i> <span class="badge"><%= Comment.where(content_id: c.id).length %></span></a>
                       <div id="showComment<%= c.id %>" >
                         <% Comment.where(content_id: c.id).each do |comment| %>
                           <p><b><%= User.find(comment.user_id).username %></b>&ensp;<%= comment.text %></p>
                         <% end %>
                         <% if signed_in? %>
                           <%= form_for @comment do |form| %>
-                            <%= form.text_field :text, type: 'text', placeholder: 'comment here', required: true %>
+                            <%= form.text_field :text, type: 'text', placeholder: 'comment here', required: true, id: "logoutComment" %>
                             <%= form.hidden_field :user_id, value: current_user.id %>
                             <%= form.hidden_field :content_id, value: c.id %>
                             <%= form.hidden_field :mood, value: @mood.id %>
@@ -113,11 +117,13 @@
               </div>
               <% if signed_in? %>
                 <%= form_for Message.new, :remote => true do |f| %>
-                  <%= f.text_field :content, id: "chat_input" %>
+                  <%= f.text_field :content, id: "chat_input", placeholder: " Chat here" %>
                   <%= f.hidden_field :user_id, value: current_user.id %>
                   <%= f.hidden_field :mood_id, value: @mood.id %>
                   <%= f.submit "Send", class: "btn btn-primary", style: "float: right;" %>
                 <% end %>
+                <% else %>
+                <input placeholder=" Chat here" id="chat_input" data-toggle="modal" data-target="#loginModal">
               <% end %>
             </div>
             <!--  -->
