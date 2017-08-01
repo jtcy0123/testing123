@@ -16,6 +16,7 @@
               <%= image_tag @x[index], class: "img-responsive" %>
               <div class="profile-info">
                 <h2 class="hvr-underline-from-center"><a href="/stories/<%= l.id%>" style="color: white;"><%= l.title %></a></h2>
+                <span class="badge" style="float: right; font-size: 10px; color: #fff;"><%= Mood.find(l.mood_id).emotion %></span>
                 <!-- <div>Description</div> -->
                 <%= social_share_button_tag(@contents) %>
               </div>
@@ -36,6 +37,7 @@
             <img src="<%= l.photo %>" style="width: 100%; height: 180px; overflow: hidden; display: block;">
             <div class="caption smallindex">
               <p><a href="/redirect/<%= l.id%>" target='_blank'><%= l.subject %></a></p>
+              <span class="badge" style="float: right; font-size: 10px; color: #fff;"><%= Mood.find(l.mood_id).emotion %></span>
               <%= social_share_button_tag(@contents) %>
             </div>
           </div>

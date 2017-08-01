@@ -79,7 +79,7 @@
               <% if signed_in? && current_user.status != 1 %>
                 <li><a href="/users/<%= current_user.id %>"><%= current_user.username %> <span class="badge"><%= current_user.point %>pts</span></a></li>
               <% elsif signed_in? %>
-                <li><%= current_user.username %> <span class="badge">ADMIN</span></li>
+                <li><a href="/stories"><%= current_user.username %> <span class="badge">ADMIN</span></a></li>
               <% else %>
                 <li class="social-media"> <a data-toggle="modal" data-target="#loginModal"><i class="fa fa-user-circle-o" style="font-size: 25px;"></i>login</a></li>
               <% end%>

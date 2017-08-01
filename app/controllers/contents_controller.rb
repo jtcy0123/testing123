@@ -15,9 +15,9 @@ class ContentsController < ApplicationController
       content.mood_id = 1
     elsif z == 'sadness'
       content.mood_id = 2
-    elsif z == 'fear'
-      content.mood_id = 3
     elsif z == 'anger'
+      content.mood_id = 3
+    elsif z == 'fear'
       content.mood_id = 4
     else
       content.mood_id = 5
@@ -36,9 +36,9 @@ class ContentsController < ApplicationController
     @stories = Story.where(mood_id: @mood.id)
 
     if params[:categoryx]==nil
-      @contents = Content.where(mood_id: @mood.id).where("subject LIKE (?)", "%#{params[:q]}%").order("count DESC")
+      @contents = Content.where(mood_id: @mood.id).where("subject LIKE (?)", "%#{params[:q]}%").order("created_at DESC")
     else
-      @contents = Content.where(mood_id: @mood.id, category: params[:categoryx]).where("subject LIKE (?)", "%#{params[:q]}%").order("count DESC")
+      @contents = Content.where(mood_id: @mood.id, category: params[:categoryx]).where("subject LIKE (?)", "%#{params[:q]}%").order("created_at DESC")
     end
 
     render template: "contents/show"
